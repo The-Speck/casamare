@@ -1,5 +1,6 @@
 class Api::SessionsController < ApplicationController
   def create
+    # debugger
     email = user_params[:email]
     password = user_params[:password]
     @user = User.find_by_credentials(email, password)
@@ -14,7 +15,7 @@ class Api::SessionsController < ApplicationController
 
   def destroy
     logout
-    render '/api/user/show'
+    render '/api/users/show'
   end
 
   def user_params
