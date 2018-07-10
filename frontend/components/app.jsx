@@ -8,8 +8,11 @@ import {
   HashRouter
 } from 'react-router-dom';
 
+import Greeting from './greeting/greeting_container';
+
 export default () => (
   <div>
     Hello World!
+    <Greeting />
   </div>
 );
