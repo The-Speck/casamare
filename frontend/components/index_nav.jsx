@@ -5,15 +5,15 @@ class IndexNav extends React.Component {
   render () {
     return (
       <nav className='filter-nav'>
-        <ul>
-          <input className='index-search-bar'></input>
-          <button>Listing Type</button>
-          <button>Any Price</button>
-          <button>0+ Beds</button>
-          <button>0+ Baths</button>
+        <ul className='filter-nav-lists'>
+          <li><input className='index-search-bar' placeholder='Address, Neighborhoods, or ZIP'></input></li>
+          <li><button>Listing Type <span>&#9660;</span></button></li>
+          <li><button>Any Price <span>&#9660;</span></button></li>
+          <li><button>0+ Beds <span>&#9660;</span></button></li>
+          <li><button>0+ Baths <span>&#9660;</span></button></li>
         </ul>
         <ul>
-          <button>Saved Homes (0)</button>
+          <button id='saved-homes-button'>Saved Homes (0)</button>
         </ul>
       </nav>
     );

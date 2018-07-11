@@ -14,6 +14,7 @@ const mapStateToProps = ({ errors }) => {
 const mapDispatchToProps = dispatch => {
   return {
     processForm: (user) => dispatch(signup(user)),
+    loginGuest: (guest) => dispatch(login(guest)),
     bothFormButton: (type, text) => {
       return (
         <a href="#" className='session-button' onClick={() => dispatch(openModal(type))}>

@@ -8,8 +8,6 @@ import {
   HashRouter
 } from 'react-router-dom';
 
-// import Modal from './modal/modal';
-// import Greeting from './greeting/greeting_container';
 import Header from './header';
 
 export default () => (

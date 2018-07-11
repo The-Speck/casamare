@@ -1,0 +1,23 @@
+/* line 1, /Users/appacademy/Desktop/casamare/app/assets/stylesheets/navbar/splash_navbar.scss */
+.splash {
+  width: 90%;
+  margin: auto;
+}
+
+/* line 6, /Users/appacademy/Desktop/casamare/app/assets/stylesheets/navbar/splash_navbar.scss */
+.splash-logo-image {
+  width: 120px;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  display: inline-block;
+}
+
+/* line 14, /Users/appacademy/Desktop/casamare/app/assets/stylesheets/navbar/splash_navbar.scss */
+.splash-header-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 100px;
+  height: 50px;
+}

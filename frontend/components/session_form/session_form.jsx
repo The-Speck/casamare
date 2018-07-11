@@ -9,6 +9,7 @@ class SessionForm extends React.Component {
       password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.guestLogin = this.guestLogin.bind(this);
   }
 
   update(field) {
@@ -53,15 +54,23 @@ class SessionForm extends React.Component {
       );
   }
 
+  guestLogin(e) {
+    e.preventDefault();
+    const guest = {
+      email: 'Guest@test.com',
+      password: 'password'
+    };
+
+    this.props.loginGuest(guest).then(this.props.closeModal);
+  }
+
   render() {
     let submitButton = 'Sign in';
     let formButtons = this.linkLogIn();
     let hasErrors = this.props.errors.length ? 'session-errors-input' : '';
-    let forgotPassword = <div className='forgot-container'><a href="#" id='forgot-link'>Forgot Your Password?</a></div>;
 
     if (this.props.formType === 'signup'){
       submitButton = 'Submit';
-      forgotPassword = null;
       formButtons = this.linkSignUp();
     }
 
@@ -90,8 +99,10 @@ class SessionForm extends React.Component {
                 placeholder='Enter password'
               />
             <br/>
-            <input className="session-submit" type="submit" value={submitButton} />
-            {forgotPassword}
+            <div className='submit-buttons'>
+              <input className="session-submit" type="submit" value={submitButton} />
+              <button onClick={this.guestLogin} className="session-submit">Guest</button>
+            </div>
             <hr/>
 
           </div>

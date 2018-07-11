@@ -1,9 +1,6 @@
 .index-logo-image {
   width: 120px;
   height: 100px;
-  position: absolute;
-  top: 0;
-  left: -11px;
   display: inline-block;
 }
 
@@ -11,6 +8,14 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
-  padding: 0 100px;
+  padding-left: 10px;
+  padding-right: 50px;
   height: 50px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.15);
+  z-index: 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.index {
+  display: flex;
 }

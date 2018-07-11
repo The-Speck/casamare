@@ -33,7 +33,6 @@
   top: 10px;
   right: 10px;
   font-size: 24px;
-  cursor: pointer;
 }
 
 .login-form-box h2 {
@@ -66,7 +65,6 @@
   border: 1px solid rgb(170, 170, 170);
   width: 100%;
   padding: 10px;
-  font-size: 16px;
 }
 
 .session-submit {
@@ -74,10 +72,9 @@
   background: #0074e4;
   color: #fff;
   border: none;
-  width: 45%;
+  width: 50%;
   border-radius: 5px;
   font-size: 15px;
-  cursor: pointer;
 }
 
 .forgot-container {
@@ -106,9 +103,4 @@
 
 .session-errors-input {
   border: 2px solid red;
-}
-
-.submit-buttons {
-  display: flex;
-  justify-content: space-between;
 }

@@ -1,0 +1,12 @@
+/* line 1, /Users/appacademy/Desktop/casamare/app/assets/stylesheets/navbar/filter_nav.scss */
+.filter-nav {
+  justify-content: space-between;
+  display: flex;
+  height: 50px;
+  width: 100%;
+}
+
+/* line 8, /Users/appacademy/Desktop/casamare/app/assets/stylesheets/navbar/filter_nav.scss */
+.index_nav {
+  display: flex;
+}

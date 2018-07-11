@@ -1,0 +1,42 @@
+/* line 1, /Users/appacademy/Desktop/casamare/app/assets/stylesheets/navbar/navbar.scss */
+header {
+  height: 50px;
+}
+
+/* line 5, /Users/appacademy/Desktop/casamare/app/assets/stylesheets/navbar/navbar.scss */
+.header-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* line 11, /Users/appacademy/Desktop/casamare/app/assets/stylesheets/navbar/navbar.scss */
+.login-signup {
+  color: #0074e4;
+}
+
+/* line 15, /Users/appacademy/Desktop/casamare/app/assets/stylesheets/navbar/navbar.scss */
+.login-signup span {
+  color: black;
+}
+
+/* line 19, /Users/appacademy/Desktop/casamare/app/assets/stylesheets/navbar/navbar.scss */
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+/* line 25, /Users/appacademy/Desktop/casamare/app/assets/stylesheets/navbar/navbar.scss */
+.nav-links > li {
+  padding: 0 10px;
+  margin: 0 10px;
+}
+
+/* line 30, /Users/appacademy/Desktop/casamare/app/assets/stylesheets/navbar/navbar.scss */
+.nav-links .selected {
+  padding: 0 15px 10px 15px;
+  font-weight: bold;
+  color: #0074e4;
+  border-bottom: 4px solid #0074e4;
+}
