@@ -8,7 +8,7 @@ import {
   HashRouter
 } from 'react-router-dom';
 
-import Modal from './modal/modal'
+import Modal from './modal/modal';
 import Greeting from './greeting/greeting_container';
 
 export default () => (

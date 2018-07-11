@@ -16,7 +16,6 @@
   left: 50%;
 
   width: 30%;
-  height: 35%;
 
   background: white;
   box-shadow: 0 0 5px;
@@ -97,4 +96,12 @@
 
 #forgot-link:hover {
   color: #62aef7
+}
+
+.session-errors-log {
+  color: red;
+}
+
+.session-errors-input {
+  border: 2px solid red;
 }

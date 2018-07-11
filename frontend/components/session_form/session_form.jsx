@@ -25,7 +25,7 @@ class SessionForm extends React.Component {
 
   renderErrors() {
     return(
-      <ul>
+      <ul className="session-errors-log">
         {this.props.errors.map((error, i) => (
           <li key={`error-${i}`}>
             {error}
@@ -54,9 +54,11 @@ class SessionForm extends React.Component {
   }
 
   render() {
+    // debugger
     let submitButton = 'Sign in';
-    let forgotPassword = <div className='forgot-container'><a href="#" id='forgot-link'>Forgot Your Password?</a></div>;
     let formButtons = this.linkLogIn();
+    let hasErrors = this.props.errors.length ? 'session-errors-input' : '';
+    let forgotPassword = <div className='forgot-container'><a href="#" id='forgot-link'>Forgot Your Password?</a></div>;
 
     if (this.props.formType === 'signup'){
       submitButton = 'Submit';
@@ -72,20 +74,20 @@ class SessionForm extends React.Component {
           {formButtons}
 
           <div onClick={this.props.closeModal} className="close-x">x</div>
-          {this.renderErrors()}
           <div className="login-form">
             <br/>
+            {this.renderErrors()}
               <input type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
-                className="login-input"
+                className={`login-input ${hasErrors}`}
                 placeholder='Enter email'
               />
             <br/>
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
-                className="login-input"
+                className={`login-input ${hasErrors}`}
                 placeholder='Enter password'
               />
             <br/>
