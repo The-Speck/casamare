@@ -5,7 +5,7 @@ section, p, footer, small {
   padding: 0;
   border: 0;
   outline: 0;
-  font: inherit;
+  font-family: 'Roboto', sans-serif;
   color: inherit;
   text-align: inherit;
   text-decoration: inherit;

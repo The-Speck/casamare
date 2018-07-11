@@ -1,0 +1,7 @@
+brew update && brew upgrade ruby-build
+rbenv install 2.5.0
+gem install bundle
+rails db:setup
+
+git config --local user.name 'alex'
+git config --local user.email 'a.plyushchay@gmail.com'

@@ -1,0 +1,35 @@
+header {
+  height: 50px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.login-signup {
+  color: #0074e4;
+}
+
+.login-signup span{
+  color: black;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.nav-links > li {
+  padding: 0 10px;
+  margin: 0 10px;
+}
+
+.nav-links .selected {
+  padding: 0 15px 10px 15px;
+  font-weight: bold;
+  color: #0074e4;
+  border-bottom: 4px solid #0074e4;
+}
