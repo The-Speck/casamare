@@ -54,7 +54,6 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    // debugger
     let submitButton = 'Sign in';
     let formButtons = this.linkLogIn();
     let hasErrors = this.props.errors.length ? 'session-errors-input' : '';
