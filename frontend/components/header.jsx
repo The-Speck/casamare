@@ -31,8 +31,8 @@ const headerSplash = (props) => {
 const headerIndex = (props) => (
   <header className='index'>
     <Modal />
+    <Link to='/'><img className='index-logo-image'src='/assets/logo.png'></img></Link>
     <div className='index-header-container' >
-      <Link to='/'><img className='index-logo-image'src='/assets/logo.png'></img></Link>
       <div className='header-left'>
         <ul className='nav-links'>
           <li> <Link className="selected" to="/buy">Buy</Link>  </li>
