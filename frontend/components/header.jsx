@@ -25,25 +25,25 @@ const headerSplash = (props) => {
     </header>
   );
 };
-// <li> <a href="/rent">Rent</a> </li>
-// <li> <a href="/sell">Sell</a> </li>
 
 const headerIndex = (props) => (
   <header className='index'>
     <Modal />
     <Link to='/'><img className='index-logo-image'src='/assets/logo.png'></img></Link>
-    <div className='index-header-container' >
-      <div className='header-left'>
-        <ul className='nav-links'>
-          <li> <Link className="selected" to="/buy">Buy</Link>  </li>
-          <li> <Link to="/rent">Rent</Link> </li>
-          <li> <Link to="/sell">Sell</Link> </li>
-        </ul>
-      </div>
+    <div className='index-navs'>
+      <div className='index-header-container' >
+        <div className='header-left'>
+          <ul className='nav-links'>
+            <li> <Link className="selected" to="/buy">Buy</Link>  </li>
+            <li> <Link to="/rent">Rent</Link> </li>
+            <li> <Link to="/sell">Sell</Link> </li>
+          </ul>
+        </div>
 
-      <Greeting />
+        <Greeting />
+      </div>
+      <IndexNav />
     </div>
-    <IndexNav />
   </header>
 );
 
