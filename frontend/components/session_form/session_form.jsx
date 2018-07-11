@@ -35,16 +35,33 @@ class SessionForm extends React.Component {
     );
   }
 
+  linkLogIn() {
+    return (
+      <div className='session-link-container'>
+        <a href='#' className='selected'>Sign in</a>
+        {this.props.bothFormButton('signup', 'New Account')}
+      </div>
+    );
+  }
+
+  linkSignUp() {
+    return (
+        <div className='session-link-container'>
+          {this.props.bothFormButton('login', 'Sign in')}
+          <a href='#' className='selected'>New Account</a>
+        </div>
+      );
+  }
+
   render() {
-    let loginSelect = 'selected';
-    let signupSelect = '';
     let submitButton = 'Sign in';
     let forgotPassword = <div className='forgot-container'><a href="#" id='forgot-link'>Forgot Your Password?</a></div>;
+    let formButtons = this.linkLogIn();
 
     if (this.props.formType === 'signup'){
-      [loginSelect, signupSelect] = [signupSelect, loginSelect];
       submitButton = 'Submit';
       forgotPassword = null;
+      formButtons = this.linkSignUp();
     }
 
     return (
@@ -52,10 +69,7 @@ class SessionForm extends React.Component {
         <form onSubmit={this.handleSubmit} className="login-form-box">
           <h2>Welcome to CasaMare</h2>
 
-          <div className='session-link-container'>
-            {this.props.bothFormButton('login', 'Sign in', loginSelect)}
-            {this.props.bothFormButton('signup', 'New Account', signupSelect)}
-          </div>
+          {formButtons}
 
           <div onClick={this.props.closeModal} className="close-x">x</div>
           {this.renderErrors()}
@@ -77,6 +91,8 @@ class SessionForm extends React.Component {
             <br/>
             <input className="session-submit" type="submit" value={submitButton} />
             {forgotPassword}
+            <hr/>
+
           </div>
         </form>
       </div>
