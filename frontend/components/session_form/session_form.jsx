@@ -36,33 +36,47 @@ class SessionForm extends React.Component {
   }
 
   render() {
+    let loginSelect = 'selected';
+    let signupSelect = '';
+    let submitButton = 'Sign in';
+    let forgotPassword = <div className='forgot-container'><a href="#" id='forgot-link'>Forgot Your Password?</a></div>;
+
+    if (this.props.formType === 'signup'){
+      [loginSelect, signupSelect] = [signupSelect, loginSelect];
+      submitButton = 'Submit';
+      forgotPassword = null;
+    }
+
     return (
       <div className="login-form-container">
         <form onSubmit={this.handleSubmit} className="login-form-box">
-          Welcome to CasaMare!
-          <br/>
-          Please {this.props.formType} or {this.props.otherForm}
-          <div onClick={this.props.closeModal} className="close-x">X</div>
+          <h2>Welcome to CasaMare</h2>
+
+          <div className='session-link-container'>
+            {this.props.bothFormButton('login', 'Sign in', loginSelect)}
+            {this.props.bothFormButton('signup', 'New Account', signupSelect)}
+          </div>
+
+          <div onClick={this.props.closeModal} className="close-x">x</div>
           {this.renderErrors()}
           <div className="login-form">
             <br/>
-            <label>Email:
               <input type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
                 className="login-input"
+                placeholder='Enter email'
               />
-            </label>
             <br/>
-            <label>Password:
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
                 className="login-input"
+                placeholder='Enter password'
               />
-            </label>
             <br/>
-            <input className="session-submit" type="submit" value={this.props.formType} />
+            <input className="session-submit" type="submit" value={submitButton} />
+            {forgotPassword}
           </div>
         </form>
       </div>

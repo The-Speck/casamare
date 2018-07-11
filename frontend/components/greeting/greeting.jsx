@@ -10,14 +10,14 @@ const Greeting = ({ currentUser, logout, openModal }) => {
   );
   const personalGreeting = () => {
     const regex = /^([^@]+)/;
-    const name = regex.exec(currentUser.email)[0]
+    const name = regex.exec(currentUser.email)[0];
 
     return (
       <hgroup className="header-group">
         <h2 className="header-name">Welcome, {name}!</h2>
         <button className="header-button" onClick={logout}>Log Out</button>
       </hgroup>
-    )
+    );
   };
 
   return (
