@@ -4,7 +4,7 @@ class IndexNav extends React.Component {
 
   render () {
     return (
-      <nav>
+      <nav className='filter-nav'>
         <ul>
           <input className='index-search-bar'></input>
           <button>Listing Type</button>
