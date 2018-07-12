@@ -6,5 +6,59 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+require "json"
+file = File.read "./storage/addresses-us-all.json"
+data = JSON.parse(file)
+
 User.create(email: 'test@test.com', password: 'password')
 User.create(email: 'Guest@test.com', password: 'password')
+
+puts 'Starting seed'
+
+ActiveRecord::Base.transaction do
+  puts 'Begin Users'
+  users = []
+
+  100.times do |i|
+    puts i
+    user = User.new
+    user.email = Faker::Internet.email
+    user.password = Faker::Internet.password(6)
+    redo unless user.valid?
+    users << user
+    user.save;
+  end
+
+  puts 'Finished Users'
+  puts 'Begin Homes'
+
+  #max 3220
+  200.times do |i|
+    puts i
+    home = Home.new
+    sampled_home = data['addresses'][i]
+
+    address = sampled_home['address1']
+    city = sampled_home['city']
+    state = sampled_home['state']
+    postal_code = sampled_home['postalCode']
+    home.address = [address, city, state, postal_code].join(', ')
+
+    home.latitude = sampled_home['coordinates']['lat']
+    home.longitude = sampled_home['coordinates']['lng']
+
+    home.beds = rand(5) + 1
+    home.baths = rand(3) + 1
+    home.price = rand(1_500_000) + 100_000
+
+    home.sale = [true, false].sample
+    home.rent = [true, false].sample
+
+    home.owner_id = users.sample.id
+
+    redo unless home.valid?
+    home.save
+  end
+
+  puts 'Finished homes'
+end

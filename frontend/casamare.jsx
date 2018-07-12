@@ -4,8 +4,8 @@ import Root from './components/root';
 import configureStore from './store/store';
 
 //TESTING
-import * as SessionApiUtil from './util/session_api_util';
-import * as SessionActions from './actions/session_actions';
+import * as HomeApiUtil from './util/home_api_util';
+import * as HomeActions from './actions/home_actions';
 //ENDTESTING
 
 
@@ -25,8 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   //Testing
-  window.SessionApiUtil = SessionApiUtil;
-  window.SessionActions = SessionActions;
+  window.HomeApiUtil = HomeApiUtil;
+  window.HomeActions = HomeActions;
   window.testUser = {email: 'test@test.test', password: 'password'};
   window.getState = store.getState;
   window.dispatch = store.dispatch;

@@ -1,0 +1,11 @@
+brew update && brew upgrade ruby-build
+rbenv install 2.5.0
+gem install bundle
+bundle install
+npm install
+rails db:setup
+git config --local user.name 'Alex'
+git config --local user.name 'a.plyushchay@gmail.com'
+
+// git commit -am '<Enter note>'
+// git push heroku master

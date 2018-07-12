@@ -10,12 +10,17 @@ import {
 
 import Header from './header';
 import SplashBody from './splash_body';
-import Footer from './footer.jsx';
+import Footer from './footer';
+import HomeIndex from './index/home_index';
 
 export default () => (
   <div>
     <Header />
-    <Route exact path="/" component={SplashBody}/>
-    <Route exact path="/" component={Footer}/>
+    <Switch>
+      <Route exact path="/" component={SplashBody}/>
+
+      <Route path='/' component={HomeIndex} />
+    </Switch>
+
   </div>
 );
