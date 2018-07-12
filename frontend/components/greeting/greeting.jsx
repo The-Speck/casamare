@@ -1,4 +1,5 @@
 import React from 'react';
+import UserSettings from './user_settings';
 
 const Greeting = ({ currentUser, logout, openModal }) => {
   const sessionLinks = () => (
@@ -13,10 +14,10 @@ const Greeting = ({ currentUser, logout, openModal }) => {
     const name = regex.exec(currentUser.email)[0];
 
     return (
-      <hgroup className="header-group">
-        <h2 className="header-name">Welcome, {name}!</h2>
-        <button className="header-button" onClick={logout}>Log Out</button>
-      </hgroup>
+      <div className="user-tooltip">
+        My Casa
+        <UserSettings logout={logout} />
+      </div>
     );
   };
 
@@ -28,3 +29,6 @@ const Greeting = ({ currentUser, logout, openModal }) => {
 };
 
 export default Greeting;
+
+// <h2 className="header-name">Welcome, {name}!</h2>
+// <button className="header-button" onClick={logout}>Log Out</button>

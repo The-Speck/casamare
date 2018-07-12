@@ -105,10 +105,52 @@
 }
 
 .session-errors-input {
-  border: 2px solid red;
+  border: 1px solid red;
+  box-shadow: 0 0 5px red;
 }
 
 .submit-buttons {
   display: flex;
   justify-content: space-between;
+}
+
+.user-tooltip {
+  position: relative;
+  margin-right: 5em;
+  padding: 15px 0;
+}
+
+.user-tooltip:hover {
+  color: #62aef7
+}
+
+.tooltip-container {
+  visibility: hidden;
+  width: 120px;
+  background-color: white;
+  text-align: center;
+  /* padding: 10px 5px; */
+  color: #3390e9;
+  border: 1px solid rgb(204, 204, 204);
+
+  position: absolute;
+  right: 0;
+  top: 50px;
+  z-index: 1;
+}
+
+.tooltip-container li {
+  padding: 10px 0;
+}
+
+.tooltip-container li:last-child {
+  border-top: 1px solid rgb(204, 204, 204);
+}
+
+.tooltip-container li:hover {
+  background-color: #d9f0f9;
+}
+
+.user-tooltip:hover .tooltip-container {
+  visibility: visible;
 }

@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
   //Testing
   window.SessionApiUtil = SessionApiUtil;
   window.SessionActions = SessionActions;
-  window.testUser = {email: 'test@test.test', password: 'password'}
+  window.testUser = {email: 'test@test.test', password: 'password'};
   window.getState = store.getState;
   window.dispatch = store.dispatch;
 

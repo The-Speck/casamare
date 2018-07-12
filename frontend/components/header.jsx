@@ -34,9 +34,9 @@ const headerIndex = (props) => (
       <div className='index-header-container' >
         <div className='header-left'>
           <ul className='nav-links'>
-            <li> <Link className="selected" to="/buy">Buy</Link>  </li>
-            <li> <Link to="/rent">Rent</Link> </li>
-            <li> <Link to="/sell">Sell</Link> </li>
+            <li> <NavLink to="/buy">Buy</NavLink>  </li>
+            <li> <NavLink to="/rent">Rent</NavLink> </li>
+            <li> <NavLink to="/sell">Sell</NavLink> </li>
           </ul>
         </div>
 

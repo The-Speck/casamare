@@ -9,9 +9,13 @@ import {
 } from 'react-router-dom';
 
 import Header from './header';
+import SplashBody from './splash_body';
+import Footer from './footer.jsx';
 
 export default () => (
   <div>
     <Header />
+    <Route exact path="/" component={SplashBody}/>
+    <Route exact path="/" component={Footer}/>
   </div>
 );
