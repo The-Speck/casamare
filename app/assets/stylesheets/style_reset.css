@@ -14,6 +14,10 @@ section, p, footer, small {
   background: transparent;
 }
 
+html {
+  height: 100%;
+}
+
 header, nav, main, section,
 footer, small {
   display: block;
@@ -21,4 +25,12 @@ footer, small {
 
 ul {
   list-style: none;
+}
+
+.clearfix:after {
+   content: " ";
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
 }

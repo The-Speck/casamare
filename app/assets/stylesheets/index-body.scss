@@ -1,0 +1,80 @@
+.index-body {
+  height: 100%;
+  display: flex;
+}
+
+.index-items-container {
+  box-sizing: border-box;
+  padding: 15px 0;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  right: 0;
+  width: 40%;
+  z-index: -1;
+  overflow: scroll;
+  height: 91%;
+
+  color: #444;
+  font-weight: 700;
+}
+
+.index-items-container h2{
+  display: inline;
+  font-size: 25px;
+  padding: 15px 20px;
+}
+
+.index-items-container span {
+  font-size: 15px;
+}
+
+.index-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 5px;
+}
+
+.index-item {
+  width: 45%;
+  height: 12.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  font-weight: normal;
+  color: white;
+}
+
+div.index-item-info {
+  text-shadow:
+  -1px -1px 0 #dcdcdc,
+  1px -1px 0 #dcdcdc,
+  -1px 1px 0 #dcdcdc,
+  1px 1px 0 #dcdcdc;
+}
+
+.index-item span {
+  padding: 5px 5px;
+}
+
+span.index-item-price {
+  font-size: 18px;
+}
+
+span.index-item-address {
+  color: #dcdcdc;
+}
+
+.number-pages {
+  display: flex;
+}
+
+.number-pages li {
+  padding: 10px;
+}
+
+.number-pages button {
+  background: none;
+  border-radius: 50%;
+}

@@ -11,7 +11,7 @@ import {
 import Header from './header';
 import SplashBody from './splash_body';
 import Footer from './footer';
-import HomeIndex from './index/home_index';
+import HomeIndex from './index/home_index_container';
 
 export default () => (
   <div>

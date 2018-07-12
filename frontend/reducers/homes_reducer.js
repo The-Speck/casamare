@@ -1,6 +1,6 @@
 import { RECEIVE_HOMES } from '../actions/home_actions';
 
-const benchesReducer = (state = {}, action) => {
+const homesReducer = (state = {}, action) => {
   Object.freeze(state);
 
   switch(action.type) {
@@ -10,3 +10,5 @@ const benchesReducer = (state = {}, action) => {
       return state;
   }
 };
+
+export default homesReducer

@@ -6,6 +6,7 @@
 
 /* line 6, /Users/appacademy/Desktop/casamare/app/assets/stylesheets/navbar/splash_navbar.scss */
 .splash-logo-image {
+  z-index: 1;
   width: 120px;
   height: 100px;
   position: absolute;

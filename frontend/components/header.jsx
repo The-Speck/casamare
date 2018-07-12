@@ -30,7 +30,7 @@ const headerIndex = (props) => (
   <header className='index'>
     <Modal />
     <Link to='/'><img className='index-logo-image'src={window.logo}></img></Link>
-    <div className='nav-filter-links'>
+    <div className='nav-filter-links clearfix'>
       <div className='index-header-container' >
         <div className='header-left'>
           <ul className='nav-links'>
