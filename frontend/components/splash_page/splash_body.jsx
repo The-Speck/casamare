@@ -37,7 +37,7 @@ class SplashBody extends React.Component {
   render () {
     const { selected, type, submit } = this.state;
 
-    if (submit) return <Redirect to={`${this.state.type}`}/>;
+    if (submit) return <Redirect to={`/${this.state.type}`}/>;
 
     return (
       <div>
