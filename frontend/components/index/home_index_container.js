@@ -6,7 +6,8 @@ import { withRouter } from 'react-router';
 
 const mapStateToProps = state => {
   return {
-    homes: Object.values(state.entities.homes)
+    homes: Object.values(state.entities.homes),
+    filters: state.ui.filters
   };
 };
 

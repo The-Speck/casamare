@@ -34,6 +34,14 @@
   border: none;
   font-size: 13px;
   font-weight: 300;
+  cursor: pointer;
+}
+
+.filter-nav button:focus{
+  outline: none;
+}
+.filter-nav button:hover {
+  color: #62aef7;
 }
 
 .index-search-bar {
@@ -45,6 +53,11 @@
   font-size: 12px;
   box-sizing: border-box;
   padding: 10px 10px;
+  border: 1px solid lightgray;
+}
+
+.index-search-bar:hover {
+  border: 1px solid #0074e4;
 }
 
 #saved-homes-button {
@@ -52,4 +65,9 @@
   border-left: 1px solid white;
   color: white;
   background-color: #0074e4;
+}
+
+#saved-homes-button:hover {
+  background-color: #1b5098;
+  background: linear-gradient(to top,#0074e4,#1b5098);
 }

@@ -12,7 +12,7 @@ class HomeIndex extends React.Component {
   }
 
   render() {
-
+    
     return (
       <div className='index-body'>
         <HomeMap/>

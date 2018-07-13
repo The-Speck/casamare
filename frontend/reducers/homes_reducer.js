@@ -11,4 +11,4 @@ const homesReducer = (state = {}, action) => {
   }
 };
 
-export default homesReducer
+export default homesReducer;

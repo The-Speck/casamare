@@ -9,7 +9,7 @@ import {
 } from 'react-router-dom';
 
 import Header from './header';
-import SplashBody from './splash_body';
+import SplashBody from './splash_page/splash_body_container';
 import Footer from './footer';
 import HomeIndex from './index/home_index_container';
 
