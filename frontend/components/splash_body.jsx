@@ -3,6 +3,12 @@ import Footer from './footer';
 import { Route, NavLink } from 'react-router-dom';
 
 class SplashBody extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { selected: 'buy' };
+  }
+
   componentDidMount() {
     const splashVideo = document.getElementById("splashVid");
     splashVideo.play();
@@ -18,11 +24,11 @@ class SplashBody extends React.Component {
 
           <div className='home-page-container'>
             <div className='home-page-buttons'>
-              <button className='home-page-button'>Buy</button>
+              <button className={`home-page-button ${}`}>Buy</button>
               <button className='home-page-button'>Rent</button>
               <button className='home-page-button'>Sell</button>
             </div>
-            <span className='search-selector'>&#9650;</span>
+            <span className='search-selector'></span>
             <input className='home-page-search' placeholder='Enter a neighborhood, city, address or ZIP code'></input>
           </div>
         </div>

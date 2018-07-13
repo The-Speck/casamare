@@ -19,7 +19,7 @@
   background-color: rgba(0,0,0,.5);
   color: white;
   font-size: 18px;
-  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+  // text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
   box-sizing: border-box;
 }
 
@@ -36,7 +36,7 @@
 
 .home-page-search {
   border: none;
-  margin-top: 20px;
+  // margin-top: 20px;
   height: 50px;
   width: 100%;
   box-sizing: border-box;
@@ -46,5 +46,24 @@
 }
 
 .search-selector {
-  color: white;
+  width: 0;
+  height: 0;
+  display: inline-block;
+  border-right: 15px solid transparent;
+  border-bottom: 12px solid white;
+  border-left: 15px solid transparent;
+  position: relative;
+  top: .5em;
+}
+
+.search-selector .buy {
+  left: 13%;
+}
+
+.search-selector .buy {
+  left: 47%;
+}
+
+.search-selector .buy {
+  left: 80%;
 }
