@@ -11,3 +11,40 @@
   bottom: 0;
   z-index: -1;
 }
+
+.home-page-button {
+  height: 50px;
+  width: 33.333%;
+  border: 1px solid white;
+  background-color: rgba(0,0,0,.5);
+  color: white;
+  font-size: 18px;
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+  box-sizing: border-box;
+}
+
+.home-page-button:focus{
+  border: none;
+}
+
+.home-page-container {
+  top: 40%;
+  position: fixed;
+  left: 32%;
+  width: 450px;
+}
+
+.home-page-search {
+  border: none;
+  margin-top: 20px;
+  height: 50px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 15px;
+  font-size: 14px;
+}
+
+.search-selector {
+  color: white;
+}

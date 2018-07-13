@@ -1,13 +1,16 @@
 .footer {
+  top: 90%;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
   display: flex;
-  height: 6.75em;
   background-color: black;
   justify-content: center;
   align-items: center;
 }
 
 .footer-container {
-  width: 30%;
+  width: 50%;
   height: 50px;
   align-items: center;
   display: flex;
@@ -21,5 +24,26 @@
 }
 
 .footer-text {
-  font-size: 8px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 15%;
+}
+
+.footer-text img {
+  width: 25px;
+}
+
+.index-items-container .footer-text {
+  width: 28%
+}
+
+.index-items-container .footer-container {
+  width: 70%
+}
+
+.index-items-container .footer{
+  top: auto;
+  bottom: auto;
 }

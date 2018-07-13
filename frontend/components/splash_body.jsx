@@ -1,6 +1,6 @@
 import React from 'react';
 import Footer from './footer';
-import { Route } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 
 class SplashBody extends React.Component {
   componentDidMount() {
@@ -16,7 +16,15 @@ class SplashBody extends React.Component {
             <source src={window.splashLink} type="video/mp4"/>
           </video>
 
-          <button></button>
+          <div className='home-page-container'>
+            <div className='home-page-buttons'>
+              <button className='home-page-button'>Buy</button>
+              <button className='home-page-button'>Rent</button>
+              <button className='home-page-button'>Sell</button>
+            </div>
+            <span className='search-selector'>&#9650;</span>
+            <input className='home-page-search' placeholder='Enter a neighborhood, city, address or ZIP code'></input>
+          </div>
         </div>
         <Route exact path="/" component={Footer}/>
       </div>

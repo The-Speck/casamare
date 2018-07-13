@@ -75,6 +75,32 @@ span.index-item-address {
 }
 
 .number-pages button {
-  background: none;
   border-radius: 50%;
+  border: none;
+  width: 25px;
+  height: 25px;
+  outline: none;
+  color: #444;
+  background: white;
+  cursor: pointer;
+}
+
+.number-pages button:hover {
+  color: #0074e4;
+  background-color: #eee;
+}
+
+button.page-selected {
+  background-color: #444;
+  color: #fff;
+}
+
+button.page-selected:hover {
+  background-color: #0074e4;
+  color: white;
+}
+
+button.next-page-button:hover {
+  background-color: none;
+  background: none;
 }

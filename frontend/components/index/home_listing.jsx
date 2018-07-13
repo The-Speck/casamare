@@ -1,5 +1,6 @@
 import React from 'react';
 import HomeIndexItem from './home_index_item';
+import Footer from '../footer';
 
 class HomeListing extends React.Component {
   constructor(props) {
@@ -20,34 +21,47 @@ class HomeListing extends React.Component {
 
     const numPages = Math.floor(this.props.homes.length / 20);
 
-    const first = [
-      <li key="oo">
-        <button onClick={this.handlePageTurning(1)}>1</button>
+    let first = [
+      <li key="1">
+        <button className={ page === 1 ? 'page-selected' : ''} onClick={this.handlePageTurning(1)}>1</button>
       </li>
     ];
 
-    const last = [
-      <li key="jjjjjj">
-        <button onClick={this.handlePageTurning(numPages)}>{numPages}</button>
+    let last = [
+      <li key={numPages}>
+        <button className={ page === numPages ? 'page-selected' : ''}
+          onClick={this.handlePageTurning(numPages)}>{numPages}</button>
       </li>
     ];
 
-    let startIdx = 1;
-    let endIdx = numPages;
+    let startIdx;
+    let endIdx;
 
-    if (page >= 5 && page <= numPages - 5) {
+    if (numPages < 5) {
+      first = [];
+      last = [];
+
+      startIdx = 1;
+      endIdx = numPages;
+    }
+    else if (page >= 5 && page <= numPages - 5) {
       startIdx = page - 2;
       endIdx = page + 2;
-      first.push(<li key="jhj">...</li>);
-      last.unshift(<li key="ee">...</li>);
-    } else if ( page < 6 ) {
+
+      first.push(<li key={'...1'}>...</li>);
+      last.unshift(<li key='...2'>...</li>);
+    }
+    else if ( page < 6 ) {
       startIdx = 2;
       endIdx = 6;
-      last.unshift(<li key='Ll'>...</li>);
-    } else {
+
+      last.unshift(<li key='...3'>...</li>);
+    }
+    else {
       startIdx = numPages - 5;
-      endIdx = numPages - 1;
-      first.push(<li key="hello">...</li>);
+      endIdx = numPages;
+
+      first.push(<li key='...4'>...</li>);
     }
 
     const pages = [];
@@ -55,12 +69,22 @@ class HomeListing extends React.Component {
     for (let i = startIdx; i < endIdx; i++) {
       pages.push(
         <li key={i}>
-          <button onClick={this.handlePageTurning(i)}>{i}</button>
+          <button className={ page === i ? 'page-selected' : ''} onClick={this.handlePageTurning(i)}>{i}</button>
         </li>
       );
     }
 
-    return first.concat(pages).concat(last);
+    let next = [];
+
+    if (numPages > 1 && page < numPages) {
+      next = [
+        <li key={numPages+1}>
+          <button className='next-page-button' onClick={this.handlePageTurning(page+1)}>NEXT</button>
+        </li>
+      ];
+    }
+
+    return first.concat(pages).concat(last).concat(next);
   }
 
   render() {
@@ -82,6 +106,7 @@ class HomeListing extends React.Component {
         <ul className='number-pages'>
           {this.pages()}
         </ul>
+        <Footer/>
       </div>
     );
   }

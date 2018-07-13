@@ -4,6 +4,7 @@ class HomeMap extends React.Component {
   componentDidMount() {
      const mapOptions = {
        center: { lat: 39.8283, lng: -98.5795 },
+       minZoom: 3,
        zoom: 4
      };
 

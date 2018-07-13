@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
   window.testUser = {email: 'test@test.test', password: 'password'};
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-
   //endTesting
 
   const root = document.getElementById('root');
