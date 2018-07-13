@@ -116,7 +116,6 @@
 
 .user-tooltip {
   position: relative;
-  margin-right: 5em;
   padding: 15px 0;
 }
 
@@ -138,9 +137,14 @@
   z-index: 1;
 }
 
-.tooltip-container li {
-  padding: 10px 0;
+.tooltip-container a {
+  display: block;
+  padding: 10px 5px;
 }
+
+/* .tooltip-container li {
+  padding: 10px 0;
+} */
 
 .tooltip-container li:last-child {
   border-top: 1px solid rgb(204, 204, 204);
