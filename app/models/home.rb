@@ -20,6 +20,9 @@ class Home < ApplicationRecord
   validates :address, :latitude, :longitude, :beds, :baths, :price, :sale, :rent, :owner_id, presence: true
   validates_uniqueness_of :latitude, :scope => [:longitude]
 
+  has_many_attached :photos
+  # has_one_attached :photo
+
   belongs_to :owner,
     foreign_key: :owner_id,
     class_name: :User
