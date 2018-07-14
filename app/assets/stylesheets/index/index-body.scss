@@ -36,7 +36,7 @@
 }
 
 .index-item {
-  width: 45%;
+  width: 49%;
   height: 12.5em;
   display: flex;
   flex-direction: column;
@@ -44,14 +44,19 @@
 
   font-weight: normal;
   color: white;
+  position: relative;
+  margin-top: 5px;
+
 }
 
 div.index-item-info {
-  text-shadow:
-  -1px -1px 0 #dcdcdc,
-  1px -1px 0 #dcdcdc,
-  -1px 1px 0 #dcdcdc,
-  1px 1px 0 #dcdcdc;
+  text-shadow: 0 0 0 rgba(0,0,0,1);
+}
+
+div.index-item-data {
+  padding: 5px;
+  position: absolute;
+  bottom: 0;
 }
 
 .index-item span {
@@ -62,8 +67,11 @@ span.index-item-price {
   font-size: 18px;
 }
 
-span.index-item-address {
+.index-item-address {
+  font-size: .9em;
   color: #dcdcdc;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  padding: 5px;
 }
 
 .number-pages {

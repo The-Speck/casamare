@@ -5,14 +5,14 @@ import { UPDATE_FILTER } from '../actions/filter_actions';
 const defaultFilters = Object.freeze({
   bounds: {},
 
-  minPrice: 0,
-  maxPrice: 1000000,
+  minPrice: null,
+  maxPrice: null,
 
-  minBeds: 1,
-  maxbeds: 5,
+  minBeds: null,
+  maxbeds: null,
 
-  minBaths: 1,
-  maxBaths: 3,
+  minBaths: null,
+  maxBaths: null,
 
   area: ''
 });

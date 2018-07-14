@@ -3,7 +3,7 @@ import { Route, Switch, NavLink, Link } from 'react-router-dom';
 
 import Modal from './modal/modal';
 import Greeting from './greeting/greeting_container';
-import IndexNav from './index_nav';
+import IndexNav from './index_nav_container';
 
 const headerSplash = (props) => {
 

@@ -28,7 +28,7 @@ export const fetchHome = id => dispatch => (
 );
 
 export const createHome = home => dispatch => (
-  HomeAPIUtil.createHome(home).then(home => (
-    dispatch(receiveHome(home))
+  HomeAPIUtil.createHome(home).then(newHome => (
+    dispatch(receiveHome(newHome))
   ))
 );

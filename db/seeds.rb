@@ -8,6 +8,9 @@
 
 require "json"
 file = File.read "./storage/addresses-us-all.json"
+images = File.read "./storage/image_url.txt"
+urls = images.split("\n")
+
 data = JSON.parse(file)
 
 User.create(email: 'test@test.com', password: 'password')
@@ -33,7 +36,7 @@ ActiveRecord::Base.transaction do
   puts 'Begin Homes'
 
   #max 3220
-  200.times do |i|
+  20.times do |i|
     puts i
     home = Home.new
     sampled_home = data['addresses'][i]
@@ -57,6 +60,16 @@ ActiveRecord::Base.transaction do
     home.owner_id = users.sample.id
 
     redo unless home.valid?
+    puts 'uploading image'
+
+    image_num = rand(241) + 1
+    file = EzDownload.open("https://s3.amazonaws.com/casamare-dev/Main+House+Images/calhouse_0#{image_num}.jpg")
+    filename = "calhouse_0#{image_num}.jpg"
+
+    home.photos.attach(io: file, filename: filename)
+
+    sleep(2)
+
     home.save
   end
 
