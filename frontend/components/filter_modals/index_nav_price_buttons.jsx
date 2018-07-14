@@ -3,10 +3,13 @@ import React from 'react';
 class IndexNavPriceButtons extends React.Component {
   constructor(props) {
     super(props);
+
+    this.handleClick = this.handleClick.bind(this);
   }
 
   findRange(type){
     let prices = [];
+
     if (type === 'min') {
       prices = ['$0+', '$50,000+', '$75,000+', '$100,000+', '$150,000+', '$200,000+', '$250,000+', '$300,000+', '$400,000+', '$500,000+'];
     } else {
@@ -22,9 +25,27 @@ class IndexNavPriceButtons extends React.Component {
       }
 
     }
+
+    const filter = `${type}Price`;
+
     return prices.map((amt, idx) => {
-      return <li key={idx}><button>{amt}</button></li>;
-      });
+      const num = this.strToInt(amt);
+      const currentPrice = (num === this.props.minPrice || num === this.props.maxPrice ? 'selected' : '');
+
+      return (
+        <li className={`price-list ${filter} ${currentPrice}`} key={idx} onClick={this.handleClick(filter, num)}>
+          {amt}
+        </li>
+      );
+    });
+  }
+
+  handleClick(filter, num) {
+    return () => {
+      this.props.setState({ [filter]: num });
+      this.props.changeFocus();
+      return this.props.updateFilter(filter, num);
+    };
   }
 
   numberWithCommas (x) {
@@ -32,7 +53,8 @@ class IndexNavPriceButtons extends React.Component {
   }
 
   strToInt(x) {
-    return parseInt(x.replace(/,/g, ''));
+    if (x === 'Any Price') return 0;
+    return parseInt(x.replace(/[$,+]/g, ''));
   }
 
   render(){

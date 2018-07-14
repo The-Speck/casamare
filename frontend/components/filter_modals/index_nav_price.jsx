@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { updateFilter } from '../../actions/filter_actions';
+import { closeModal } from '../../actions/modal_actions';
 import IndexNavPriceButtons from './index_nav_price_buttons';
 
 class IndexNavPrice extends React.Component {
@@ -15,6 +16,19 @@ class IndexNavPrice extends React.Component {
 
     this.handlePrice = this.handlePrice.bind(this);
     this.handleView = this.handleView.bind(this);
+  }
+
+  componentDidMount() {
+    this.refs['min'].focus();
+  }
+
+  changeFocus() {
+    if (this.state.viewing === 'min' ) {
+      this.setState({ viewing: 'max' });
+      this.refs['max'].focus();
+    } else {
+      this.props.closeModal();
+    }
   }
 
   handlePrice(type) {
@@ -34,36 +48,64 @@ class IndexNavPrice extends React.Component {
     return parseInt(x.replace(/,/g, '')) || 0;
   }
 
+  handleSubmit(type) {
+    return (e) => {
+      e.preventDefault();
+      this.props.updateFilter(type, this.state[type]);
+      this.changeFocus();
+    };
+  }
+// autoFocus={  viewing === 'min' ? true : false }
+// autoFocus={  viewing === 'max' ? true : false }
   render(){
+    const { viewing } = this.state;
     const minPrice = this.state.minPrice ? this.state.minPrice : "";
     const maxPrice = this.state.maxPrice ? this.state.maxPrice : "";
 
     return (
       <div>
         <div className='price-input'>
-          <input
-            onChange={this.handlePrice('minPrice')}
-            onClick={this.handleView('min')}
-            type='text' placeholder='Min'
-            autoFocus
-            value={minPrice}
-            />
+          <form onSubmit={this.handleSubmit('minPrice')}>
+            <input
+              onChange={this.handlePrice('minPrice')}
+              onClick={this.handleView('min')}
+              type='text' placeholder='Min'
+              ref='min'
+              value={minPrice}
+              />
+          </form>
           &ndash;
-          <input
-            onChange={this.handlePrice('maxPrice')}
-            onClick={this.handleView('max')}
-            type='text'
-            placeholder='Max'
-            value={maxPrice}
-            />
+          <form onSubmit={this.handleSubmit('maxPrice')}>
+            <input
+              onChange={this.handlePrice('maxPrice')}
+              onClick={this.handleView('max')}
+              type='text'
+              placeholder='Max'
+              ref='max'
+              value={maxPrice}
+              />
+          </form>
         </div>
 
         <hr/>
 
         {
           this.state.viewing === 'min' ?
-          <IndexNavPriceButtons type='min' updateFilter={updateFilter} /> :
-          <IndexNavPriceButtons type='max' minPrice={this.strToInt(minPrice)} updateFilter={updateFilter} />
+          <IndexNavPriceButtons
+            type='min'
+            minPrice={this.strToInt(minPrice)}
+            maxPrice={this.strToInt(maxPrice)}
+            updateFilter={this.props.updateFilter}
+            setState={this.setState.bind(this)}
+            changeFocus={this.changeFocus.bind(this)}
+            /> :
+          <IndexNavPriceButtons
+            type='max'
+            minPrice={this.strToInt(minPrice)}
+            maxPrice={this.strToInt(maxPrice)} updateFilter={this.props.updateFilter}
+            setState={this.setState.bind(this)}
+            changeFocus={this.changeFocus.bind(this)}
+            />
         }
       </div>
     );
@@ -79,7 +121,8 @@ const msp = state => {
 
 const mdp = dispatch => {
   return {
-    updateFilter: (filter, value) => dispatch(updateFilter(filter, value))
+    updateFilter: (filter, value) => dispatch(updateFilter(filter, value)),
+    closeModal: () => dispatch(closeModal())
   };
 };
 

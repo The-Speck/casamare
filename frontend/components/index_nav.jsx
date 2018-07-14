@@ -23,7 +23,12 @@ class IndexNav extends React.Component {
             <input className='index-search-bar' placeholder='Address, Neighborhoods, or ZIP'>
             </input>
           </li>
-          <li><button onClick={this.handleFilter('price')}>Any Price <span>&#9660;</span></button></li>
+          <li>
+            <button
+              onClick={this.handleFilter('price')}>Any Price
+              <span>&#9660;</span>
+            </button>
+          </li>
           <li><button>0+ Beds <span>&#9660;</span></button></li>
           <li><button>0+ Baths <span>&#9660;</span></button></li>
         </ul>

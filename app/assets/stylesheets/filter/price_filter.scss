@@ -13,3 +13,25 @@
   line-height: 1.5em;
   padding: 4px 6px 2px 6px;
 }
+
+.price-list {
+  padding: 10px 12px;
+  width: 90%;
+  cursor: pointer;
+  font-weight: 400;
+  display: block;
+}
+
+.price-list:hover {
+  background: #0074e4;
+  color: white;
+}
+
+.price-button.max {
+  text-align: end;
+}
+
+.price-list.selected {
+  background: #62aef7;
+  color: white;
+}

@@ -1,7 +1,9 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
+
 import IndexPriceFilter from '../filter_modals/index_nav_price';
+import IndexBedsFilter from '../filter_modals/index_nav_beds';
 
 function FilterModal({modal, closeModalCB}) {
   if (!modal) {
@@ -14,6 +16,10 @@ function FilterModal({modal, closeModalCB}) {
     case 'price':
       component = <IndexPriceFilter />;
       filterType = 'price';
+      break;
+    case 'beds':
+      component = <IndexBedsFilter />;
+      filterType = 'beds';
       break;
     default:
       return null;
