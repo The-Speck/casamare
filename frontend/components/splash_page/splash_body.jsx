@@ -11,6 +11,7 @@ class SplashBody extends React.Component {
     this.handleTypeButton = this.handleTypeButton.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -25,7 +26,12 @@ class SplashBody extends React.Component {
     this.setState({ type: e.target.textContent.toLowerCase() });
   }
 
-  handleSearch(e){
+  handleSubmit(e) {
+    e.preventDefault();
+    this.handleSearch();
+  }
+
+  handleSearch(){
     this.props.updateFilter('area', this.state.search);
     this.setState({ submit: true });
   }
@@ -56,11 +62,13 @@ class SplashBody extends React.Component {
             <span className={`search-selector ${type}`}></span>
 
             <div className='homepage-search-container'>
-              <input
-                onChange={this.handleChange}
-                className='home-page-search'
-                placeholder='Enter a neighborhood, city, address or ZIP code'>
-              </input>
+              <form onSubmit={this.handleSubmit}>
+                <input
+                  onChange={this.handleChange}
+                  className='home-page-search'
+                  placeholder='Enter a neighborhood, city, address or ZIP code'>
+                </input>
+              </form>
               <div className='hp-search-button-container'>
                 <input onClick={this.handleSearch} type='submit' className='home-page-search-button' value='Search'/>
               </div>

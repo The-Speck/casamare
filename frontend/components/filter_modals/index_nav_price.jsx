@@ -55,8 +55,7 @@ class IndexNavPrice extends React.Component {
       this.changeFocus();
     };
   }
-// autoFocus={  viewing === 'min' ? true : false }
-// autoFocus={  viewing === 'max' ? true : false }
+
   render(){
     const { viewing } = this.state;
     const minPrice = this.state.minPrice ? this.state.minPrice : "";

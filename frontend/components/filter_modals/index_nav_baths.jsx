@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { updateFilter } from '../../actions/filter_actions';
 import { closeModal } from '../../actions/modal_actions';
 
-class IndexNavBeds extends React.Component {
+class IndexNavBaths extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -11,10 +11,10 @@ class IndexNavBeds extends React.Component {
   createOptions() {
     const options = [];
     for (let i = 0; i < 7; i++) {
-      const selected = (i === this.props.minBeds ? 'selected' : '');
+      const selected = (i === this.props.minBaths ? 'selected' : '');
 
       options.push(
-        <li key={i} className={`bed-item ${selected}`}
+        <li key={i} className={`bath-item ${selected}`}
             onClick={this.handleClick(i)}>
             {i}+
         </li>
@@ -26,18 +26,18 @@ class IndexNavBeds extends React.Component {
 
   handleClick(num){
     return () => {
-      this.props.updateFilter('minBeds', num);
+      this.props.updateFilter('minBaths', num);
       this.props.closeModal();
     };
   }
 
   render(){
-    const bedOptions = this.createOptions();
+    const bathOptions = this.createOptions();
 
     return (
-      <div className='bed-container'>
-        <ul className='bed-list'>
-          {bedOptions}
+      <div className='bath-container'>
+        <ul className='bath-list'>
+          {bathOptions}
         </ul>
       </div>
     );
@@ -46,7 +46,7 @@ class IndexNavBeds extends React.Component {
 
 const msp = state => {
   return {
-    minBeds: state.ui.filters.minBeds
+    minBaths: state.ui.filters.minBaths
   };
 };
 
@@ -57,4 +57,4 @@ const mdp = dispatch => {
   };
 };
 
-export default connect(msp, mdp)(IndexNavBeds);
+export default connect(msp, mdp)(IndexNavBaths);

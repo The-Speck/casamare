@@ -15,26 +15,40 @@ class IndexNav extends React.Component {
   }
 
   render () {
+    const { maxPrice, minBaths, minBeds, minPrice, area } = this.props;
+
+
     return (
       <nav className='filter-nav'>
         <FilterModal />
         <ul className='filter-nav-lists'>
           <li>
-            <input className='index-search-bar' placeholder='Address, Neighborhoods, or ZIP'>
+            <input
+              className='index-search-bar'
+              placeholder='Address, Neighborhoods, or ZIP'
+              value={area}>
             </input>
           </li>
           <li>
             <button
-              onClick={this.handleFilter('price')}>Any Price
-              <span>&#9660;</span>
+              onClick={this.handleFilter('price')}>
+              Any Price <span>&#9660;</span>
             </button>
           </li>
-          <li><button>0+ Beds <span>&#9660;</span></button></li>
-          <li><button>0+ Baths <span>&#9660;</span></button></li>
+          <li>
+            <button
+              onClick={this.handleFilter('beds')}>
+              {minBeds}+ Beds <span>&#9660;</span>
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={this.handleFilter('baths')}>
+              {minBaths}+ Baths <span>&#9660;</span>
+            </button>
+          </li>
         </ul>
-        <ul>
-          <button id='saved-homes-button'>Saved Homes (0)</button>
-        </ul>
+        <button id='saved-homes-button'>Saved Homes (0)</button>
       </nav>
     );
   }

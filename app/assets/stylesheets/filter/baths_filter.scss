@@ -1,38 +1,38 @@
-.modal-child.beds{
+.modal-child.baths{
   width: 5em;
-  left: 31.5em;
+  left: 37.5em;
 }
 
-.bed-item {
+.bath-item {
   padding: 10px 12px;
   width: 68%;
   cursor: pointer;
   display: block;
 }
 
-.bed-item {
+.bath-item {
   font-weight: bold;
   font-size: 16px;
 }
 
-.bed-item:hover, .bed-item.selected:hover {
+.bath-item:hover, .bath-item.selected:hover {
   background: #0074e4;
 }
 
-.bed-item:hover, .bed-item.selected {
+.bath-item:hover, .bath-item.selected {
   color: white;
 }
 
-.bed-list.max {
+.bath-list.max {
   text-align: end;
 }
 
-.bed-item.selected {
+.bath-item.selected {
   background: #62aef7;
   color: white;
 }
 
-li.bed-item {
+li.bath-item {
     font-weight: 400;
     font-size: 15px;
 }

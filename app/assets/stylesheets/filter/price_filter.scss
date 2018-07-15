@@ -1,3 +1,7 @@
+.modal-child.price {
+  left: 25.5em;
+}
+
 .price-input {
   display: flex;
   justify-content: space-around;
@@ -14,7 +18,7 @@
   padding: 4px 6px 2px 6px;
 }
 
-.price-list {
+.price-button {
   padding: 10px 12px;
   width: 90%;
   cursor: pointer;
@@ -22,16 +26,16 @@
   display: block;
 }
 
-.price-list:hover {
+.price-button:hover, .price-button.selected:hover {
   background: #0074e4;
   color: white;
 }
 
-.price-button.max {
+.price-list.max {
   text-align: end;
 }
 
-.price-list.selected {
+.price-button.selected {
   background: #62aef7;
   color: white;
 }

@@ -11,7 +11,9 @@ class IndexNavPriceButtons extends React.Component {
     let prices = [];
 
     if (type === 'min') {
-      prices = ['$0+', '$50,000+', '$75,000+', '$100,000+', '$150,000+', '$200,000+', '$250,000+', '$300,000+', '$400,000+', '$500,000+'];
+      prices = ['$0+', '$50,000+', '$75,000+',
+      '$100,000+', '$150,000+', '$200,000+', '$250,000+',
+      '$300,000+', '$400,000+', '$500,000+'];
     } else {
       if (this.props.minPrice !== null){
         const min = this.props.minPrice;
@@ -21,7 +23,9 @@ class IndexNavPriceButtons extends React.Component {
         prices = prices.map(num => `$${this.numberWithCommas(num)}`);
         prices.push('Any Price');
       } else {
-        prices = ['$100,000', '$200,000', '$300,000', '$400,000', '$500,000', '$600,000', '$700,000', '$800,000', '$900,000', 'Any Price'];
+        prices = ['$100,000', '$200,000', '$300,000',
+        '$400,000', '$500,000', '$600,000', '$700,000',
+        '$800,000', '$900,000', 'Any Price'];
       }
 
     }
@@ -30,10 +34,15 @@ class IndexNavPriceButtons extends React.Component {
 
     return prices.map((amt, idx) => {
       const num = this.strToInt(amt);
-      const currentPrice = (num === this.props.minPrice || num === this.props.maxPrice ? 'selected' : '');
+      const currentPrice = (num === this.props.minPrice ||
+        num === this.props.maxPrice ?
+        'selected' : '');
 
       return (
-        <li className={`price-list ${filter} ${currentPrice}`} key={idx} onClick={this.handleClick(filter, num)}>
+        <li
+          className={`price-button ${filter} ${currentPrice}`}
+          key={idx}
+          onClick={this.handleClick(filter, num)}>
           {amt}
         </li>
       );
@@ -61,7 +70,7 @@ class IndexNavPriceButtons extends React.Component {
     const range = this.findRange(this.props.type);
 
     return (
-      <ul className={`price-button ${this.props.type}`}>
+      <ul className={`price-list ${this.props.type}`}>
         {range}
       </ul>
     );

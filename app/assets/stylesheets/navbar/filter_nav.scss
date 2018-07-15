@@ -28,7 +28,7 @@
   font-size: 10px;
 }
 
-.filter-nav button {
+.filter-nav-lists button {
   padding: 17px 10px;
   background: none;
   border: none;
@@ -61,10 +61,13 @@
 }
 
 #saved-homes-button {
+  box-sizing: border-box;
   font-weight: bold;
-  border-left: 1px solid white;
   color: white;
   background-color: #0074e4;
+  height: 100%;
+  padding: 10px;
+  border: none;
 }
 
 #saved-homes-button:hover {

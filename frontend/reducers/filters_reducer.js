@@ -8,9 +8,9 @@ const defaultFilters = Object.freeze({
   minPrice: null,
   maxPrice: null,
 
-  minBeds: null,
+  minBeds: 0,
 
-  minBaths: null,
+  minBaths: 0,
 
   area: ''
 });
