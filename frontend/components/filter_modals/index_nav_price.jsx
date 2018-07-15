@@ -16,6 +16,7 @@ class IndexNavPrice extends React.Component {
 
     this.handlePrice = this.handlePrice.bind(this);
     this.handleView = this.handleView.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -51,15 +52,19 @@ class IndexNavPrice extends React.Component {
   handleSubmit(type) {
     return (e) => {
       e.preventDefault();
-      this.props.updateFilter(type, this.state[type]);
+      let price = this.state[type];
+      if(type === 'maxPrice' && this.state.minPrice > this.state.maxPrice){
+        price = 0;
+      }
+      this.props.updateFilter(type, price);
       this.changeFocus();
     };
   }
 
   render(){
     const { viewing } = this.state;
-    const minPrice = this.state.minPrice ? this.state.minPrice : "";
-    const maxPrice = this.state.maxPrice ? this.state.maxPrice : "";
+    const minPrice = this.state.minPrice !== 0 ? this.state.minPrice : "";
+    const maxPrice = this.state.maxPrice !== 0 ? this.state.maxPrice : "";
 
     return (
       <div>

@@ -5,8 +5,8 @@ import { UPDATE_FILTER } from '../actions/filter_actions';
 const defaultFilters = Object.freeze({
   bounds: {},
 
-  minPrice: null,
-  maxPrice: null,
+  minPrice: 0,
+  maxPrice: 0,
 
   minBeds: 0,
 
