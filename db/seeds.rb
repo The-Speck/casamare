@@ -13,6 +13,9 @@ urls = images.split("\n")
 
 data = JSON.parse(file)
 
+User.destroy_all
+Home.destroy_all
+
 User.create(email: 'test@test.com', password: 'password')
 User.create(email: 'Guest@test.com', password: 'password')
 
@@ -22,7 +25,7 @@ ActiveRecord::Base.transaction do
   puts 'Begin Users'
   users = []
 
-  100.times do |i|
+  10.times do |i|
     puts i
     user = User.new
     user.email = Faker::Internet.email
@@ -36,10 +39,10 @@ ActiveRecord::Base.transaction do
   puts 'Begin Homes'
 
   #max 3220
-  20.times do |i|
+  30.times do |i|
     puts i
     home = Home.new
-    sampled_home = data['addresses'][i]
+    sampled_home = data['addresses'][rand(3221)]
 
     address = sampled_home['address1']
     city = sampled_home['city']
@@ -62,7 +65,7 @@ ActiveRecord::Base.transaction do
     redo unless home.valid?
     puts 'uploading image'
 
-    image_num = rand(241) + 1
+    image_num = (rand(241) + 1).to_s.rjust(3, '0');
     file = EzDownload.open("https://s3.amazonaws.com/casamare-dev/Main+House+Images/calhouse_0#{image_num}.jpg")
     filename = "calhouse_0#{image_num}.jpg"
 

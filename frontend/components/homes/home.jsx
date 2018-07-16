@@ -33,7 +33,7 @@ class Home extends React.Component {
 
     let editButton = '';
     if (this.props.home && this.props.home.ownerId === this.props.sessionId) {
-      editButton = <Link to={`edit/${this.props.homeId}`}>Edit</Link>;
+      editButton = <Link to={`${type}/${this.props.homeId}/edit`}>Edit</Link>;
     }
 
     // <img src={photos[this.state.currentPhoto]}/>

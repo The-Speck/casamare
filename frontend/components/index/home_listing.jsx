@@ -20,7 +20,7 @@ class HomeListing extends React.Component {
   pages() {
     const { page } = this.state;
 
-    const numPages = Math.floor(this.props.homes.length / 20);
+    let numPages = Math.floor(this.props.homes.length / 20);
 
     let first = [
       <li key="1">
@@ -43,13 +43,14 @@ class HomeListing extends React.Component {
       last = [];
 
       startIdx = 1;
-      endIdx = numPages;
+      numPages += 1;
+      endIdx = numPages + 1;
     }
     else if (page >= 5 && page <= numPages - 5) {
       startIdx = page - 2;
       endIdx = page + 2;
 
-      first.push(<li key={'...1'}>...</li>);
+      first.push(<li key='...1'>...</li>);
       last.unshift(<li key='...2'>...</li>);
     }
     else if ( page < 6 ) {

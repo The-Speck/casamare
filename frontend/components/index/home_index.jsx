@@ -1,9 +1,10 @@
 import React from 'react';
-import { Route } from 'react-router';
+import { Route, Switch } from 'react-router';
 
 import HomeMap from '../map/home_map';
 import HomeListing from './home_listing';
 import HomeShow from '../homes/home_container';
+import CreateHome from '../homes/create_home';
 
 class HomeIndex extends React.Component {
   constructor(props){
@@ -22,7 +23,11 @@ class HomeIndex extends React.Component {
         <HomeMap/>
         <HomeListing homes={this.props.homes}
           type={type}/>
-        <Route path={`/${type}/:homeId`} component={HomeShow}/>
+
+        <Switch>
+          <Route path={'/sell'} component={CreateHome}/>
+          <Route path={`/${type}/:homeId`} component={HomeShow}/>
+        </Switch>
       </div>
     );
   }

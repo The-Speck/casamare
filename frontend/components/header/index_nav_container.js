@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { openModal, closeModal } from '../actions/modal_actions';
+import { openModal, closeModal } from '../../actions/modal_actions';
 import IndexNav from './index_nav';
 
 const msp = state => {

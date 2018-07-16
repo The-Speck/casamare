@@ -1,11 +1,13 @@
 import React from 'react';
-import FilterModal from './modal/filter_modal';
+import FilterModal from '../modal/filter_modal';
 
 class IndexNav extends React.Component {
   constructor(props){
     super(props);
 
+    this.state = { area: this.props.filters.area };
     this.handleFilter = this.handleFilter.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
   handleFilter(type) {
@@ -50,8 +52,12 @@ class IndexNav extends React.Component {
     return Math.round( num * 10 ) / 10;
   }
 
+  handleSearch(e) {
+    this.setState({ area: e.target.value });
+  }
+
   render () {
-    const { maxPrice, minBaths, minBeds, minPrice, area } = this.props.filters;
+    const { maxPrice, minBaths, minBeds, minPrice } = this.props.filters;
     const priceStr = this.priceString(minPrice, maxPrice);
 
     return (
@@ -60,9 +66,10 @@ class IndexNav extends React.Component {
         <ul className='filter-nav-lists'>
           <li>
             <input
+              onChange={this.handleSearch}
               className='index-search-bar'
               placeholder='Address, Neighborhoods, or ZIP'
-              value={area}>
+              value={this.state.area}>
             </input>
           </li>
           <li>

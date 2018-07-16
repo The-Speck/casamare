@@ -17,8 +17,9 @@
 #
 
 class Home < ApplicationRecord
-  validates :address, :latitude, :longitude, :beds, :baths, :price, :sale, :rent, :owner_id, presence: true
+  validates :address, :latitude, :longitude, :beds, :baths, :price, :owner_id, presence: true
   validates_uniqueness_of :latitude, :scope => [:longitude]
+  validates_inclusion_of :sale, :rent, in: [true, false] 
 
   has_many_attached :photos
   # has_one_attached :photo
