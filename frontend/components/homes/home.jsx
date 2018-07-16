@@ -36,8 +36,6 @@ class Home extends React.Component {
       editButton = <Link to={`${type}/${this.props.homeId}/edit`}>Edit</Link>;
     }
 
-    // <img src={photos[this.state.currentPhoto]}/>
-
     return (
       <div onClick={this.closeShow}
         className='home-background'>
@@ -66,7 +64,7 @@ class Home extends React.Component {
 
           <div className='home-image'>
             {
-              //image
+              <img src={photos[this.state.currentPhoto]}/>
             }
           </div>
 

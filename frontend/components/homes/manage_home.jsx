@@ -74,9 +74,9 @@ class ManageHome extends React.Component {
               <label>Sale / Rent
                 <select>
                   <option disabled selected>Sale or rent</option>
-                  <option value='1'>Sale</option>
-                  <option value='2'>Rent</option>
-                  <option value='3'>Both</option>
+                  <option value='sale'>Sale</option>
+                  <option value='rent'>Rent</option>
+                  <option value='both'>Both</option>
                 </select>
               </label>
             </div>

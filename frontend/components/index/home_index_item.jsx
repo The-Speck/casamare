@@ -13,7 +13,6 @@ class HomeIndexItem extends React.Component {
       beds = home.beds === 1 ? 'bd' : 'bds';
     }
 
-    // <img className='thumbnail-image' src={home.photos[0]}/>
     return (
       <li className='index-item'>
         <div className='thumbnail-image-container'>
