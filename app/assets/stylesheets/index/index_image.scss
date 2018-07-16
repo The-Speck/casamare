@@ -1,7 +1,8 @@
 .thumbnail-image {
-  height: 100%;
+  width: 100%;
   overflow: hidden;
-  z-index: -1
+  z-index: -1;
+  margin: auto;
 }
 
 // linear-gradient( rgba(0,0,0,0.45), rgba(0,0,0,0), rgba(0,0,0,0.45))
@@ -17,7 +18,8 @@
 }
 
 .thumbnail-image-container {
-  display: inline;
+  display: flex;
+  z-index: -2;
   height: 100%;
   overflow: hidden;
   background-color: black;
