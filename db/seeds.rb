@@ -13,8 +13,8 @@ urls = images.split("\n")
 
 data = JSON.parse(file)
 
-User.destroy_all
-Home.destroy_all
+# User.destroy_all
+# Home.destroy_all
 
 User.create(email: 'test@test.com', password: 'password')
 User.create(email: 'Guest@test.com', password: 'password')
@@ -29,7 +29,7 @@ ActiveRecord::Base.transaction do
     puts i
     user = User.new
     user.email = Faker::Internet.email
-    user.password = Faker::Internet.password(6)
+    user.password = SecureRandom.urlsafe_base64(16)
     redo unless user.valid?
     users << user
     user.save;
