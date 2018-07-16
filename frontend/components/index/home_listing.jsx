@@ -1,6 +1,7 @@
 import React from 'react';
 import HomeIndexItem from './home_index_item';
 import Footer from '../footer';
+import { Link } from 'react-router-dom';
 
 class HomeListing extends React.Component {
   constructor(props) {
@@ -93,7 +94,15 @@ class HomeListing extends React.Component {
     const houseStart = (this.state.page - 1) * 20;
     const houseEnd = this.state.page * 20;
     const homes = allHomes.slice(houseStart, houseEnd).map(home => {
-      return <HomeIndexItem key={home.id} home={home} />;
+      return (
+        <Link
+          to={`/${this.props.type}/${home.id}`}
+          key={home.id}
+          className='home-show-link'
+          >
+          <HomeIndexItem home={home} />
+        </Link>
+      );
     });
 
     return (

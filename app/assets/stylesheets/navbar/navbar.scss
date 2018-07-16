@@ -8,8 +8,12 @@ header {
   justify-content: flex-end;
 }
 
-.login-signup {
+.login-signup button{
   color: #0074e4;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 .login-signup span{

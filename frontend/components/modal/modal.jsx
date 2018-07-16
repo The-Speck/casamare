@@ -22,7 +22,7 @@ function Modal({modal, closeModalCB}) {
   }
   return (
     <div className="modal-background session" onClick={closeModalCB}>
-      <div className="modal-child" onClick={e => e.stopPropagation()}>
+      <div className="modal-child session" onClick={e => e.stopPropagation()}>
         { component }
       </div>
     </div>

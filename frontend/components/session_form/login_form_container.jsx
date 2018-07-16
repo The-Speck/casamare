@@ -15,11 +15,11 @@ const mapDispatchToProps = dispatch => {
   return {
     processForm: (user) => dispatch(login(user)),
     loginGuest: (guest) => dispatch(login(guest)),
-    bothFormButton: (type, text, selected) => {
+    bothFormButton: (type, text) => {
       return (
-        <a href="#" className={`session-button ${selected}`} onClick={() => dispatch(openModal(type))}>
+        <button href="#" className={`session-button`} onClick={() => dispatch(openModal(type))}>
           {text}
-        </a>
+        </button>
       );
     },
     closeModal: () => dispatch(closeModal())

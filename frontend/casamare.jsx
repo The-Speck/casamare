@@ -5,7 +5,7 @@ import configureStore from './store/store';
 
 //TESTING
 import * as HomeApiUtil from './util/home_api_util';
-import * as HomeActions from './actions/home_actions';
+import ownerUtil from './actions/owner_actions';
 //ENDTESTING
 
 
@@ -25,11 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   //Testing
-  window.HomeApiUtil = HomeApiUtil;
-  window.HomeActions = HomeActions;
-  window.testUser = {email: 'test@test.test', password: 'password'};
-  window.getState = store.getState;
-  window.dispatch = store.dispatch;
+  // window.HomeApiUtil = HomeApiUtil;
+  // window.HomeActions = HomeActions;
+  // window.getState = store.getState;
+  // window.dispatch = store.dispatch;
   //endTesting
 
   const root = document.getElementById('root');

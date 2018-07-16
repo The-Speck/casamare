@@ -17,9 +17,9 @@ const mapDispatchToProps = dispatch => {
     loginGuest: (guest) => dispatch(login(guest)),
     bothFormButton: (type, text) => {
       return (
-        <a href="#" className='session-button' onClick={() => dispatch(openModal(type))}>
+        <button href="#" className='session-button' onClick={() => dispatch(openModal(type))}>
           {text}
-        </a>
+        </button>
       );
     },
     closeModal: () => dispatch(closeModal())

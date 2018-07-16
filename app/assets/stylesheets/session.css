@@ -42,11 +42,18 @@
   font-weight: 700;
 }
 
-.login-form-box a {
+.session-button {
   font-size: 18px;
   font-weight: 300;
   margin-right: 20px;
   padding-bottom: .7em;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.session-button:focus {
+  outline: none;
 }
 
 .login-form-box .selected {
@@ -55,7 +62,6 @@
 }
 
 .session-link-container {
-  padding-bottom: .75em;
   border-bottom: 1px solid lightgrey;
 }
 
@@ -117,6 +123,7 @@
 .user-tooltip {
   position: relative;
   padding: 15px 0;
+  cursor: pointer;
 }
 
 .user-tooltip:hover {

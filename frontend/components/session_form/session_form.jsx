@@ -39,7 +39,7 @@ class SessionForm extends React.Component {
   linkLogIn() {
     return (
       <div className='session-link-container'>
-        <a href='#' className='selected'>Sign in</a>
+        <button href='#' className='session-button selected'>Sign in</button>
         {this.props.bothFormButton('signup', 'New Account')}
       </div>
     );
@@ -49,7 +49,7 @@ class SessionForm extends React.Component {
     return (
         <div className='session-link-container'>
           {this.props.bothFormButton('login', 'Sign in')}
-          <a href='#' className='selected'>New Account</a>
+          <button href='#' className='session-button selected'>New Account</button>
         </div>
       );
   }

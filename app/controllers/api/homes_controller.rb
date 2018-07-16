@@ -5,7 +5,8 @@ class Api::HomesController < ApplicationController
   end
 
   def show
-
+    home_id = params['id'].to_i
+    @home = Home.find(home_id)
   end
 
   def create
