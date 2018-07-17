@@ -12,15 +12,24 @@ const defaultFilters = Object.freeze({
 
   minBaths: 0,
 
+  buy: true,
+  rent: false,
+
   area: ''
 });
 
 const filtersReducer = (state = defaultFilters, action) => {
   Object.freeze(state);
+  let newFilter;
+
   if (action.type === UPDATE_FILTER) {
-    const newFilter = {
-      [action.filter]: action.value
-    };
+    if (action.filter === 'buy') {
+      newFilter = { buy: true, rent: false };
+    } else if (action.filter === 'rent') {
+      newFilter = { buy: false, rent: true };
+    } else {
+      newFilter = { [action.filter]: action.value };
+    }
     return merge({}, state, newFilter);
   } else {
     return state;

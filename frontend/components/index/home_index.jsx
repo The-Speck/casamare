@@ -12,20 +12,22 @@ import EditHome from '../homes/edit_home';
 class HomeIndex extends React.Component {
   constructor(props){
     super(props);
+
+    this.state = { type: /[a-z]{3,}/.exec(this.props.location.pathname)[0] };
   }
 
   componentDidMount() {
-    this.props.fetchHomes();
+    this.props.updateFilter( this.state.type, true );
   }
 
+
   render() {
-    const type = /[a-z]{3,}/.exec(this.props.location.pathname);
+    const type = this.state.type;
 
     return (
       <div className='index-body'>
-        <HomeMap/>
-        <HomeListing homes={this.props.homes}
-          type={type}/>
+        <HomeMap type={type} area={this.props.filters.area}/>
+        <HomeListing homes={this.props.homes} type={type}/>
 
         <Switch>
           <ProtectedRoute exact path={'/sell'} component={CreateHome}/>

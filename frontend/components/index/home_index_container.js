@@ -1,8 +1,10 @@
 import React from 'react';
-import { fetchHomes } from '../../actions/home_actions.js';
 import HomeIndex from './home_index';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+
+import { fetchHomes } from '../../actions/home_actions.js';
+import { changeFilter } from '../../actions/filter_actions';
 
 const mapStateToProps = state => {
   return {
@@ -13,7 +15,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchHomes: filters => dispatch(fetchHomes(filters))
+    fetchHomes: filters => dispatch(fetchHomes(filters)),
+    updateFilter: (filter, value) => dispatch(changeFilter(filter, value))
   };
 };
 

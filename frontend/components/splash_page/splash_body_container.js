@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import SplashBody from './splash_body';
 
-import { updateFilter } from '../../actions/filter_actions';
+import { changeFilter } from '../../actions/filter_actions';
 
 const msp = state => {
 
@@ -11,7 +11,7 @@ const msp = state => {
 
 const mdp = dispatch => {
   return {
-    updateFilter: (filter, value) => dispatch(updateFilter(filter, value))
+    updateFilter: (filter, value) => dispatch(changeFilter(filter, value))
   };
 };
 

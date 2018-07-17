@@ -1,11 +1,21 @@
 class Api::HomesController < ApplicationController
   def index
-    @homes = Home.all.with_attached_photos
+    homes = Home.in_bounds(params[:bounds]).with_attached_photos.sample(400)
+    min = params[:minPrice].to_i
+    max_temp = params[:maxPrice].to_i
+    max = (max_temp == 0 ? (+1.0/0.0) : max_temp )
+
+    @homes = homes.select do |home|
+      home.price >= min &&
+      home.price <= max &&
+      home.beds >= params[:minBeds].to_i &&
+      home.baths >= params[:minBaths].to_i
+    end
     render :index
   end
 
   def show
-    home_id = params['id'].to_i
+    home_id = params[:id].to_i
     @home = Home.find(home_id)
   end
 

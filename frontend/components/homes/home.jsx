@@ -34,7 +34,7 @@ class Home extends React.Component {
     let editButton = '';
     if (this.props.home && this.props.home.ownerId === this.props.sessionId) {
       const id = this.props.home.id;
-      editButton = <Link className='home-header-edit' exact to={`/sell/${id}/edit`}>EDIT</Link>;
+      editButton = <Link className='home-header-edit' to={`/sell/${id}/edit`}>EDIT</Link>;
     }
 
     return (

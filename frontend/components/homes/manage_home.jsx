@@ -128,7 +128,6 @@ class ManageHome extends React.Component {
       errorText = 'Invalid Address';
     }
 
-    debugger
     if (this.props.errors.length > 0) {
       this.props.errors.map(err => {
         if (err.includes('Latitude')) {

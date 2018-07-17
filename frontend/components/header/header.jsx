@@ -6,6 +6,7 @@ import Modal from '../modal/modal';
 import { openModal } from '../../actions/modal_actions';
 import Greeting from '../greeting/greeting_container';
 import IndexNav from './index_nav_container';
+import { updateFilter } from '../../actions/filter_actions';
 
 const sessionCheck = (props) => {
   return (e) => {
@@ -13,6 +14,14 @@ const sessionCheck = (props) => {
       return props.openModal('login');
     }
   };
+};
+
+const handleBuy = (props) => {
+  return () => props.updateFilter("buy", true);
+};
+
+const handleRent = (props) => {
+  return () => props.updateFilter("rent", true);
 };
 
 const headerSplash = (props) => {
@@ -27,8 +36,8 @@ const headerSplash = (props) => {
       <div className='splash-header-container' >
         <div className='header-left'>
           <ul className='nav-links'>
-            <li> <Link className="selected" to="/buy">Buy</Link>  </li>
-            <li> <Link to="/rent">Rent</Link> </li>
+            <li onClick={handleBuy(props)}> <Link className="selected" to="/buy">Buy</Link> </li>
+            <li onClick={handleRent(props)}> <Link to="/rent">Rent</Link> </li>
             {sellLink}
           </ul>
         </div>
@@ -52,8 +61,8 @@ const headerIndex = (props) => {
         <div className='index-header-container' >
           <div className='header-left'>
             <ul className='nav-links'>
-              <li> <NavLink to="/buy">Buy</NavLink>  </li>
-              <li> <NavLink to="/rent">Rent</NavLink> </li>
+              <li onClick={handleBuy(props)}> <NavLink to="/buy">Buy</NavLink>  </li>
+              <li onClick={handleRent(props)}> <NavLink to="/rent">Rent</NavLink> </li>
               {sellLink}
             </ul>
           </div>
@@ -75,14 +84,20 @@ const msp = state => {
 const mdp = dispatch => {
   return {
     openModal: modal => dispatch(openModal(modal)),
+    updateFilter: (filter, value) => dispatch(updateFilter(filter, value))
   };
 };
 
-const appHeader = () => (
-  <Switch>
-    <Route exact path="/" component={connect(msp, mdp)(headerSplash)}/>
-    <Route path="/" component={connect(msp, mdp)(headerIndex)}/>
-  </Switch>
-);
+class appHeader extends React.Component {
+
+  render() {
+    return (
+      <Switch>
+        <Route exact path="/" component={connect(msp, mdp)(headerSplash)}/>
+        <Route path="/" component={connect(msp, mdp)(headerIndex)}/>
+      </Switch>
+    );
+  }
+}
 
 export default appHeader;
