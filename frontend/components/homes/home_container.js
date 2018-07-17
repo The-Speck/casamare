@@ -10,9 +10,10 @@ const msp = (state, ownProps) => {
   const home = state.entities.homes[homeId] || {};
 
   return {
-    sessionId: { session: state.session.id },
+    sessionId: state.session.id ,
 
     home: {
+      id: home.id || null,
       address: home.address || '',
       baths: home.baths || 0,
       beds: home.beds || 0,

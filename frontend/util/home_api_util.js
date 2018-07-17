@@ -13,3 +13,23 @@ export const fetchHome = (homeId) => {
     error: (err) => console.log(err)
   });
 };
+
+export const createHome = (home) => {
+  return $.ajax({
+    method: 'POST',
+    url: '/api/homes',
+    data: home,
+    contentType: false,
+    processData: false
+  });
+};
+
+export const editHome = (home, id) => {
+  return $.ajax({
+    method: 'PATCH',
+    url: `/api/homes/${home.id}`,
+    data: home,
+    contentType: false,
+    processData: false
+  });
+};

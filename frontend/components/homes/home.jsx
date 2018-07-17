@@ -33,7 +33,8 @@ class Home extends React.Component {
 
     let editButton = '';
     if (this.props.home && this.props.home.ownerId === this.props.sessionId) {
-      editButton = <Link to={`${type}/${this.props.homeId}/edit`}>Edit</Link>;
+      const id = this.props.home.id;
+      editButton = <Link className='home-header-edit' exact to={`/sell/${id}/edit`}>EDIT</Link>;
     }
 
     return (
@@ -46,7 +47,7 @@ class Home extends React.Component {
           <ul className='home-header'>
             <button className='home-header-save'>
               <span className='save-heart'>&#9825;</span> SAVE
-              </button>
+            </button>
             <div>
               {editButton}
               <button
