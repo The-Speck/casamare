@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import Home from './home.jsx';
 
 import { fetchOwner } from '../../actions/owner_actions';
-import { fetchHome } from '../../actions/home_actions';
+import { fetchHome, deleteHome } from '../../actions/home_actions';
 
 
 const msp = (state, ownProps) => {
@@ -31,6 +31,7 @@ const mdp = dispatch => {
   return {
     fetchOwner: (ownerId) => dispatch(fetchOwner(ownerId)),
     fetchHome: (homeId) => dispatch(fetchHome(homeId)),
+    deleteHome: id => dispatch(deleteHome(id))
   };
 };
 

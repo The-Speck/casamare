@@ -7,6 +7,7 @@ class Home extends React.Component {
 
     this.state = { currentPhoto: 0, close: false};
     this.closeShow = this.closeShow.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
@@ -27,6 +28,11 @@ class Home extends React.Component {
     this.setState({ close: true });
   }
 
+  handleDelete() {
+    this.props.deleteHome(this.props.home.id);
+    this.closeShow();
+  }
+
   render () {
     const { address, baths, beds, ownerEmail, sale, rent, price, photos} = this.props.home;
     const type = /^\/[a-z]+/.exec(this.props.location.pathname)[0];
@@ -35,6 +41,12 @@ class Home extends React.Component {
     if (this.props.home && this.props.home.ownerId === this.props.sessionId) {
       const id = this.props.home.id;
       editButton = <Link className='home-header-edit' to={`/sell/${id}/edit`}>EDIT</Link>;
+    }
+
+    let deleteButton = '';
+    if (this.props.home && this.props.home.ownerId === this.props.sessionId) {
+      const id = this.props.home.id;
+      deleteButton = <button className='home-header-delete' onClick={this.handleDelete}>DELETE</button>;
     }
 
     return (
@@ -49,6 +61,7 @@ class Home extends React.Component {
               <span className='save-heart'>&#9825;</span> SAVE
             </button>
             <div>
+              {deleteButton}
               {editButton}
               <button
                 onClick={this.closeShow}

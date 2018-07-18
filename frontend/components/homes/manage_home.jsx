@@ -38,7 +38,6 @@ class ManageHome extends React.Component {
     formData.append('home[price]', this.state.price);
     formData.append('home[sale]', this.state.sale);
     formData.append('home[rent]', this.state.rent);
-    formData.append('home[owner_id]', this.state.userId);
     formData.append('home[latitude]', this.state.lat);
     formData.append('home[longitude]', this.state.lng);
     this.state.photos.forEach((photo) => {
@@ -53,17 +52,22 @@ class ManageHome extends React.Component {
 
   handleChange(type) {
     return (e) => {
-      if ( this.handleValidAddress() && this.handleValidSubmit()) {
-        this.setState({ disabled: false, disabledClass: '' });
-      } else {
-        this.setState({ disabled: true, disabledClass: 'disabled' });
-      }
-
       let val = e.target.value;
       if (type === 'baths' || type === 'beds') val = parseInt(val);
       if (type === 'price') val = parseInt(/\d+/.exec(val));
       this.setState({ [type]: val });
+      debugger
+      this.handleValidAddress();
+      this.setDisability();
     };
+  }
+
+  setDisability() {
+    if ( this.state.validAddress && this.handleValidSubmit()) {
+      this.setState({ disabled: false, disabledClass: '' });
+    } else {
+      this.setState({ disabled: true, disabledClass: 'disabled' });
+    }
   }
 
   handleRentSell(e) {
@@ -83,6 +87,7 @@ class ManageHome extends React.Component {
       default:
         return;
     }
+    this.setDisability();
   }
 
   getLatLng(address) {
@@ -98,7 +103,7 @@ class ManageHome extends React.Component {
 
   handleValidSubmit() {
     const {baths, beds, sale, rent, price} = this.state;
-    return baths > 0 && beds > 0 && price > 0, sale !== null, rent !== null;
+    return baths > 0 && beds > 0 && price > 0 && sale !== null && rent !== null;
   }
 
   handleValidAddress(){
@@ -108,7 +113,6 @@ class ManageHome extends React.Component {
       this.getLatLng(address);
       if (lat !== null, lng !== null) {
         this.setState({ validAddress: true, address });
-        return true;
       }
     }
   }

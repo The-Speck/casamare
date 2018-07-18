@@ -18,12 +18,21 @@ class HomeIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.updateFilter( this.state.type, true );
+    if (this.state.type !== 'sell') {
+      this.props.updateFilter( this.state.type, true );
+    }
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.filters.area !== this.props.filters.area) {
-      this.setState({ area: this.props.filters.area });
+    const keys = Object.keys(this.props.filters);
+    //
+    for (let i = 0; i < keys.length; i++)
+    {
+      if (prevProps.filters[keys[i]] !== this.props.filters[keys[i]]) {
+          this.setState({ area: this.props.filters.area });
+    //       this.props.fetchHomes(this.props.filters);
+    //       break;
+        }
     }
   }
 

@@ -50,3 +50,11 @@ export const editHome = (home, id) => dispatch => (
     return dispatch(receiveErrors(err.responseJSON));
   })
 );
+
+export const deleteHome = (id) => dispatch => (
+  HomeAPIUtil.deleteHome(id).then(message => (
+    console.log(message)
+  ), err => {
+    return dispatch(receiveErrors(err.responseJSON));
+  })
+);

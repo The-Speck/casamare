@@ -24,6 +24,7 @@ class Api::HomesController < ApplicationController
 
   def create
     @home = Home.new(home_params);
+    @home.owner_id = current_user.id
 
     if @home.save
       attach_generic_house(@home);
@@ -34,37 +35,43 @@ class Api::HomesController < ApplicationController
   end
 
   def attach_generic_house(home)
-    unless home.photos.attached?
-      file = EzDownload.open('http://www.redheadscafe.com/images/icons/home.png')
+    home.photos.purge
+    if home_photos.empty?
+      file = EzDownload.open('https://s3.amazonaws.com/casamare-dev/Main+House+Images/home.png')
       home.photos.attach(io: file, filename: 'home.png')
-    # else
-    #   home_photos[:photos].each do |photo|
-    #     @home.photos.attach(photo)
-    #   end
+    else
+      home_photos[:photos].each do |photo|
+        home.photos.attach(photo)
+      end
     end
   end
 
   def update
     @home = Home.find(params[:id])
-
     if @home.update(home_params)
       attach_generic_house(@home);
-      render :shoe
+      render :show
     else
       render json: @home.errors.full_messages, status: 422
     end
   end
 
   def destroy
-    home = Home.find(params[:id])
-    home.update({ sale: false, rent: false })
+    home = current_user.homes.find(params[:id])
+
+    if home
+      home.update({ sale: false, rent: false })
+      render json: {message: 'House has been taken off the market'}
+    else
+      render json: home.errors.full_messages, status: 422
+    end
   end
 
   def home_params
-    params.require(:home).permit(:address, :latitude, :longitude, :beds, :baths, :price, :sale, :rent, :owner_id, photos: [])
+    params.require(:home).permit(:address, :latitude, :longitude, :beds, :baths, :price, :sale, :rent)
   end
 
   def home_photos
-    params.require(:home).permit()
+    params.require(:home).permit(photos: [])
   end
 end

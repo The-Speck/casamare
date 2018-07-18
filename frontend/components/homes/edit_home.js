@@ -32,7 +32,7 @@ const msp = (reactState, ownProps) => {
 
 const mdp = dispatch => {
   return {
-    processHome: (home) => dispatch(editHome(home)),
+    processHome: (home, id) => dispatch(editHome(home, id)),
   };
 };
 

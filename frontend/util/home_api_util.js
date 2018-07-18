@@ -28,7 +28,7 @@ export const createHome = (home) => {
 export const editHome = (home, id) => {
   return $.ajax({
     method: 'PATCH',
-    url: `/api/homes/${home.id}`,
+    url: `/api/homes/${id}`,
     data: home,
     contentType: false,
     processData: false
