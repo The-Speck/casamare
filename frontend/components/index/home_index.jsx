@@ -13,12 +13,17 @@ class HomeIndex extends React.Component {
   constructor(props){
     super(props);
 
-    this.state = { type: /[a-z]{3,}/.exec(this.props.location.pathname)[0] };
+    this.state = { type: /[a-z]{3,}/.exec(this.props.location.pathname)[0],
+    area: props.filters.area};
   }
 
   componentDidMount() {
-    if (this.state.type !== /[a-z]{3,}/.exec(this.props.location.pathname)[0]) {
-      this.props.updateFilter( this.state.type, true );
+    this.props.updateFilter( this.state.type, true );
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.filters.area !== this.props.filters.area) {
+      this.setState({ area: this.props.filters.area });
     }
   }
 
@@ -28,7 +33,7 @@ class HomeIndex extends React.Component {
 
     return (
       <div className='index-body'>
-        <HomeMap type={type} area={this.props.filters.area}/>
+        <HomeMap type={type} area={this.state.area}/>
         <HomeListing homes={this.props.homes} type={type}/>
 
         <Switch>

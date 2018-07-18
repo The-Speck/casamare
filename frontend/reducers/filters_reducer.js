@@ -12,8 +12,8 @@ const defaultFilters = Object.freeze({
 
   minBaths: 0,
 
-  buy: true,
-  rent: false,
+  buy: null,
+  rent: null,
 
   area: ''
 });

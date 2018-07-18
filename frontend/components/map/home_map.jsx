@@ -22,10 +22,6 @@ class HomeMap extends React.Component {
     super(props);
   }
 
-  componentDidUpdate(prevProps) {
-    debugger
-  }
-
   getLatLng(address) {
     const geocoder = new google.maps.Geocoder();
     geocoder.geocode( { 'address': address}, function(results, status) {
@@ -76,8 +72,23 @@ class HomeMap extends React.Component {
     }
   }
 
-   componentDidUpdate() {
-    this.MarkerManager.updateMarkers(this.props.homes);
+   componentDidUpdate(prevProps) {
+    if (prevProps.area !== this.props.area) {
+      const geocoder = new google.maps.Geocoder();
+
+      geocoder.geocode( { 'address': this.props.area }, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK)
+        {
+          const lat = results[0].geometry.location.lat();
+          const lng = results[0].geometry.location.lng();
+          this.map.setCenter(new google.maps.LatLng(lat, lng));
+          this.map.setZoom(13);
+        }
+      }.bind(this));
+    }
+    if (this.MarkerManager) {
+      this.MarkerManager.updateMarkers(this.props.homes);
+    }
    }
 
   render() {
@@ -102,6 +113,7 @@ class HomeMap extends React.Component {
   }
 
   handleMarkerClick(home) {
+    debugger
     this.props.history.push(`/${this.props.type}/${home.id}`);
   }
 
@@ -129,4 +141,4 @@ const mdp = dispatch => {
 };
 
 
-export default connect(msp, mdp)(HomeMap);
+export default withRouter(connect(msp, mdp)(HomeMap));
