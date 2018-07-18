@@ -18,7 +18,7 @@ class HomeIndexItem extends React.Component {
         <div className='thumbnail-image-container'>
           <div className='thumbnail-image-gradient'/>
           {
-            //<img className='thumbnail-image' src={home.photos[0]}/>
+            <img className='thumbnail-image' src={home.photos[0]}/>
           }
         </div>
         <div className='index-item-data'>
