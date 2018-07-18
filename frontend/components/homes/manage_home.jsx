@@ -14,6 +14,12 @@ class ManageHome extends React.Component {
     this.handleRentSell = this.handleRentSell.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.home.streetAddress !== prevProps.home.streetAddress){
+      this.setState( this.props.home );
+    }
+  }
+
   closeShow() {
     this.setState({ close: true });
   }
@@ -43,7 +49,6 @@ class ManageHome extends React.Component {
       this.props.home.id).then((response) => {
         this.setState({ id: response.home.id, submit: true });
     });
-
   }
 
   handleChange(type) {

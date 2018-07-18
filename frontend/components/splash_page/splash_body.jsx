@@ -32,6 +32,7 @@ class SplashBody extends React.Component {
   }
 
   handleSearch(){
+    this.props.updateFilter(this.type, true);
     this.props.updateFilter('area', this.state.search);
     this.setState({ submit: true });
   }

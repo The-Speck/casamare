@@ -34,3 +34,11 @@ export const editHome = (home, id) => {
     processData: false
   });
 };
+
+export const deleteHome = id => {
+  return $.ajax({
+    method: 'DELETE',
+    url: `/api/homes/${id}`,
+    error: err => console.log
+  });
+};

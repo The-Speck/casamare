@@ -8,6 +8,7 @@ class IndexNav extends React.Component {
     this.state = { area: this.props.filters.area };
     this.handleFilter = this.handleFilter.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleFilter(type) {
@@ -53,7 +54,12 @@ class IndexNav extends React.Component {
   }
 
   handleSearch(e) {
+    e.preventDefault();
     this.setState({ area: e.target.value });
+  }
+
+  handleSubmit(){
+    this.props.updateFilter('area', this.state.area);
   }
 
   render () {
@@ -65,12 +71,14 @@ class IndexNav extends React.Component {
         <FilterModal />
         <ul className='filter-nav-lists'>
           <li>
-            <input
-              onChange={this.handleSearch}
-              className='index-search-bar'
-              placeholder='Address, Neighborhoods, or ZIP'
-              value={this.state.area}>
-            </input>
+            <form onSubmit={this.handleSubmit}>
+              <input
+                onChange={this.handleSearch}
+                className='index-search-bar'
+                placeholder='Address, Neighborhoods, or ZIP'
+                value={this.state.area}>
+              </input>
+            </form>
           </li>
           <li>
             <button

@@ -17,7 +17,9 @@ class HomeIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.updateFilter( this.state.type, true );
+    if (this.state.type !== /[a-z]{3,}/.exec(this.props.location.pathname)[0]) {
+      this.props.updateFilter( this.state.type, true );
+    }
   }
 
 

@@ -6,3 +6,5 @@ bundle.js.map
 npm-debug.log
 tmp/
 config/master.key
+log/development.log
+log/
