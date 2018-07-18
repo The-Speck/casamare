@@ -56,7 +56,6 @@ class ManageHome extends React.Component {
       if (type === 'baths' || type === 'beds') val = parseInt(val);
       if (type === 'price') val = parseInt(/\d+/.exec(val));
       this.setState({ [type]: val });
-      debugger
       this.handleValidAddress();
       this.setDisability();
     };
