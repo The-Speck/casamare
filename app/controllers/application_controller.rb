@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  helper_method :current_user, :require_logged_in, :logged_in?
+  helper_method :current_user, :require_logged_in, :logged_in?, :saved_homes
 
   def login(user)
     return nil if session[:session_token]
@@ -20,6 +20,10 @@ class ApplicationController < ActionController::Base
 
   def current_user
     @current_user ||= User.find_by_session_token(session[:session_token])
+  end
+
+  def saved_homes
+    Save.where(user_id: current_user.id)
   end
 
   def require_logged_in

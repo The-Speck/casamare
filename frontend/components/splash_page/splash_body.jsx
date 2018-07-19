@@ -6,7 +6,7 @@ class SplashBody extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { type: 'buy', search: '', submit: false};
+    this.state = { type: 'buy', search: '', submit: false, loggedIn: this.props.loggedIn};
 
     this.handleTypeButton = this.handleTypeButton.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -19,11 +19,16 @@ class SplashBody extends React.Component {
     splashVideo.play();
   }
 
-  handleTypeButton(e){
-    const allowedTypes = ['Rent', 'Buy', 'Sell'];
-    if (!allowedTypes.includes(e.target.textContent)) return;
+  componentDidUpdate(prevProps) {
+    if(prevProps.loggedIn !== this.props.loggedIn) {
+      this.setState({ loggedIn: this.props.loggedIn });
+    }
+  }
 
-    this.setState({ type: e.target.textContent.toLowerCase() });
+  handleTypeButton(type){
+    return () => {
+      this.setState({ type });
+    };
   }
 
   handleSubmit(e) {
@@ -32,9 +37,13 @@ class SplashBody extends React.Component {
   }
 
   handleSearch(){
-    this.props.updateFilter(this.type, true);
-    this.props.updateFilter('area', this.state.search);
-    this.setState({ submit: true });
+    if (this.state.loggedIn || this.state.type !== 'sell') {
+      this.props.updateFilter(this.type, true);
+      this.props.updateFilter('area', this.state.search);
+      this.setState({ submit: true });
+    } else {
+      this.props.openModal('login');
+    }
   }
 
   handleChange(e){
@@ -55,9 +64,9 @@ class SplashBody extends React.Component {
 
           <div className='home-page-container'>
             <div className='home-page-buttons'>
-              <button onClick={this.handleTypeButton} className={`home-page-button ${type==='buy'?'selected':''}`}>Buy</button>
-              <button onClick={this.handleTypeButton} className={`home-page-button ${type==='rent'?'selected':''}`}>Rent</button>
-              <button onClick={this.handleTypeButton} className={`home-page-button ${type==='sell'?'selected':''}`}>Sell</button>
+              <button onClick={this.handleTypeButton('buy')} className={`home-page-button ${type==='buy'?'selected':''}`}>Buy</button>
+              <button onClick={this.handleTypeButton('rent')} className={`home-page-button ${type==='rent'?'selected':''}`}>Rent</button>
+              <button onClick={this.handleTypeButton('sell')} className={`home-page-button ${type==='sell'?'selected':''}`}>Sell</button>
             </div>
 
             <span className={`search-selector ${type}`}></span>
