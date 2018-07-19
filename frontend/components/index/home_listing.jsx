@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+
 import HomeIndexItem from './home_index_item';
 import Footer from '../footer';
-import { Link, withRouter } from 'react-router-dom';
 
 class HomeListing extends React.Component {
   constructor(props) {
@@ -103,13 +105,11 @@ class HomeListing extends React.Component {
     const houseEnd = this.state.page * 20;
     const homes = allHomes.slice(houseStart, houseEnd).map(home => {
       return (
-        <Link
-          to={`/${this.state.type}/${home.id}`}
+        <HomeIndexItem
           key={home.id}
-          className='home-show-link'
-          >
-          <HomeIndexItem home={home} />
-        </Link>
+          home={home}
+          type={this.state.type}
+          saved={this.props.savedHomes.includes(home.id)}/>
       );
     });
 
@@ -129,4 +129,17 @@ class HomeListing extends React.Component {
   }
 }
 
-export default withRouter(HomeListing);
+const msp = state => {
+  const user = state.entities.users[state.session.id] || {};
+
+  return {
+    homes: Object.values(state.entities.homes),
+    savedHomes: user.savedHomes || []
+  };
+};
+
+const mdp = dispatch => {
+  return {};
+};
+
+export default withRouter(connect(msp, mdp)(HomeListing));

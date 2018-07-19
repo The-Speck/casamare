@@ -48,7 +48,7 @@ class HomeIndex extends React.Component {
     return (
       <div className='index-body'>
         <HomeMap type={type} area={this.state.area}/>
-        <HomeListing homes={this.props.homes} type={type}/>
+        <HomeListing type={type}/>
 
         <Switch>
           <ProtectedRoute exact path={'/sell'} component={CreateHome}/>

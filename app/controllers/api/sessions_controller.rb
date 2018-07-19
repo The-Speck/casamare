@@ -6,8 +6,7 @@ class Api::SessionsController < ApplicationController
 
     if @user
       login(@user)
-      @saves = saved_homes
-      render '/api/users/show'
+      render('api/users/_user.json.jbuilder')
     else
       render json: ['Invalid email/password'], status: 422
     end

@@ -8,6 +8,7 @@ class Home extends React.Component {
     this.state = { currentPhoto: 0, close: false};
     this.closeShow = this.closeShow.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleContact = this.handleContact.bind(this);
   }
 
   componentDidMount() {
@@ -31,6 +32,15 @@ class Home extends React.Component {
   handleDelete() {
     this.props.deleteHome(this.props.home.id);
     this.closeShow();
+  }
+
+  handleContact() {
+    if (this.props.sessionId) {
+      const emailTo = this.props.home.ownerEmail;
+      location.href = "mailto:"+emailTo;
+    } else {
+      this.props.openModal('login');
+    }
   }
 
   render () {
@@ -113,7 +123,7 @@ class Home extends React.Component {
                   </span>
                 </li>
               : ''}
-              <li><button className='contact-button'>Contact</button></li>
+              <li><button onClick={this.handleContact} className='contact-button'>Contact</button></li>
             </ul>
           </div>
         </div>

@@ -5,8 +5,11 @@ import { updateFilter } from '../../actions/filter_actions';
 import IndexNav from './index_nav';
 
 const msp = state => {
+  const user = state.entities.users[state.session.id] || {};
+
   return {
-    filters: state.ui.filters
+    filters: state.ui.filters,
+    savedHomes: user.savedHomes || []
   };
 };
 

@@ -9,7 +9,7 @@ import { changeFilter } from '../../actions/filter_actions';
 const mapStateToProps = state => {
   return {
     homes: Object.values(state.entities.homes),
-    filters: state.ui.filters
+    filters: state.ui.filters,
   };
 };
 

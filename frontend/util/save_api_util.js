@@ -7,7 +7,7 @@ export const createSave = (homeId) => {
   });
 };
 
-export const destroySave = (home_id) => {
+export const deleteSave = (home_id) => {
   return $.ajax({
     method: 'DELETE',
     url: `/api/saves/${home_id}`,

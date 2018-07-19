@@ -99,7 +99,7 @@ class IndexNav extends React.Component {
             </button>
           </li>
         </ul>
-        <button id='saved-homes-button'>Saved Homes (0)</button>
+        <button id='saved-homes-button'>{`Saved Homes (${this.props.savedHomes.length})`}</button>
       </nav>
     );
   }
