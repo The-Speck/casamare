@@ -6,7 +6,7 @@ import Modal from '../modal/modal';
 import { openModal } from '../../actions/modal_actions';
 import Greeting from '../greeting/greeting_container';
 import IndexNav from './index_nav_container';
-import { updateFilter } from '../../actions/filter_actions';
+import { changeFilter } from '../../actions/filter_actions';
 
 const sessionCheck = (props) => {
   return (e) => {
@@ -17,11 +17,11 @@ const sessionCheck = (props) => {
 };
 
 const handleBuy = (props) => {
-  return () => props.updateFilter("buy", true);
+  return () => props.changeFilter("buy", true);
 };
 
 const handleRent = (props) => {
-  return () => props.updateFilter("rent", true);
+  return () => props.changeFilter("rent", true);
 };
 
 const headerSplash = (props) => {
@@ -84,7 +84,7 @@ const msp = state => {
 const mdp = dispatch => {
   return {
     openModal: modal => dispatch(openModal(modal)),
-    updateFilter: (filter, value) => dispatch(updateFilter(filter, value))
+    changeFilter: (filter, value) => dispatch(changeFilter(filter, value))
   };
 };
 

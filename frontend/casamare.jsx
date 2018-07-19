@@ -4,7 +4,7 @@ import Root from './components/root';
 import configureStore from './store/store';
 
 //TESTING
-import * as HomeApiUtil from './util/home_api_util';
+import * as SaveApiUtil from './util/save_api_util';
 import ownerUtil from './actions/owner_actions';
 //ENDTESTING
 
@@ -25,10 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   //Testing
-  // window.HomeApiUtil = HomeApiUtil;
+  window.SaveApiUtil = SaveApiUtil;
   // window.HomeActions = HomeActions;
-  // window.getState = store.getState;
-  // window.dispatch = store.dispatch;
+  window.getState = store.getState;
+  window.dispatch = store.dispatch;
   //endTesting
 
   const root = document.getElementById('root');

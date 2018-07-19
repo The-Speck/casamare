@@ -12,6 +12,7 @@ class ManageHome extends React.Component {
     this.handleFile = this.handleFile.bind(this);
     this.handeChange = this.handleChange.bind(this);
     this.handleRentSell = this.handleRentSell.bind(this);
+    this.setDisability = this.setDisability.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -22,6 +23,7 @@ class ManageHome extends React.Component {
 
   closeShow() {
     this.setState({ close: true });
+    this.props.changeFilter('buy', true);
   }
 
   handleFile(e) {
@@ -55,9 +57,8 @@ class ManageHome extends React.Component {
       let val = e.target.value;
       if (type === 'baths' || type === 'beds') val = parseInt(val);
       if (type === 'price') val = parseInt(/\d+/.exec(val));
-      this.setState({ [type]: val });
+      this.setState({ [type]: val }, this.setDisability);
       this.handleValidAddress();
-      this.setDisability();
     };
   }
 
@@ -72,21 +73,20 @@ class ManageHome extends React.Component {
   handleRentSell(e) {
     switch (e.target.value) {
       case 'rent':
-        this.setState({ rent: true });
-        this.setState({ sale: false });
+        this.setState({ rent: true }, this.setDisability);
+        this.setState({ sale: false }, this.setDisability);
         break;
       case 'sale':
-        this.setState({ rent: false });
-        this.setState({ sale: true });
+        this.setState({ rent: false }, this.setDisability);
+        this.setState({ sale: true }, this.setDisability);
         break;
       case 'both':
-        this.setState({ rent: true });
-        this.setState({ sale: true });
+        this.setState({ rent: true }, this.setDisability);
+        this.setState({ sale: true }, this.setDisability);
         break;
       default:
         return;
     }
-    this.setDisability();
   }
 
   getLatLng(address) {
@@ -118,8 +118,6 @@ class ManageHome extends React.Component {
 
   render() {
     let saleRent;
-    let disabled;
-    let disabledClass;
     let errorText='';
 
     if (this.state.sale && this.state.rent) {

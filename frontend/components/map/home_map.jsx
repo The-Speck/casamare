@@ -108,7 +108,7 @@ class HomeMap extends React.Component {
     });
     google.maps.event.addListener(this.map, 'click', (event) => {
       const coords = getCoordsObj(event.latLng);
-      this.handleClick(coords);
+      // this.handleClick(coords);
     });
   }
 
@@ -116,12 +116,12 @@ class HomeMap extends React.Component {
     this.props.history.push(`/${this.props.type}/${home.id}`);
   }
 
-  handleClick(coords) {
-    this.props.history.push({
-      pathname: '/homes/',
-      search: `lat=${coords.lat}&lng=${coords.lng}`
-    });
-  }
+  // handleClick(coords) {
+  //   this.props.history.push({
+  //     pathname: '/homes/',
+  //     search: `lat=${coords.lat}&lng=${coords.lng}`
+  //   });
+  // }
 }
 
 const msp = state => {

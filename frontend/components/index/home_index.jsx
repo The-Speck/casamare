@@ -14,7 +14,7 @@ class HomeIndex extends React.Component {
     super(props);
 
     this.state = { type: /[a-z]{3,}/.exec(this.props.location.pathname)[0],
-    area: props.filters.area};
+    area: props.filters.area, completedType: false};
   }
 
   componentDidMount() {
@@ -25,14 +25,19 @@ class HomeIndex extends React.Component {
 
   componentDidUpdate(prevProps) {
     const keys = Object.keys(this.props.filters);
-    //
+    const newType = /[a-z]{3,}/.exec(this.props.location.pathname)[0];
+
     for (let i = 0; i < keys.length; i++)
     {
       if (prevProps.filters[keys[i]] !== this.props.filters[keys[i]]) {
-          this.setState({ area: this.props.filters.area });
-    //       this.props.fetchHomes(this.props.filters);
-    //       break;
-        }
+        this.setState({
+          area: this.props.filters.area,
+          type: newType
+        });
+
+        this.props.fetchHomes(this.props.filters);
+        break;
+      }
     }
   }
 

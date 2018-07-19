@@ -24,6 +24,8 @@ class Home < ApplicationRecord
   has_many_attached :photos
   # has_one_attached :photo
 
+  has_many :saves
+
   def self.in_bounds(bounds)
     self.where("latitude < ?", bounds[:northEast][:lat])
       .where("latitude > ?", bounds[:southWest][:lat])

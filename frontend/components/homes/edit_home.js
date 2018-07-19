@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import ManageHome from './manage_home.jsx';
 
 import { editHome } from '../../actions/home_actions';
+import { changeFilter } from '../../actions/filter_actions';
 
 const msp = (reactState, ownProps) => {
   if (!reactState.session.id) return {};
@@ -33,6 +34,7 @@ const msp = (reactState, ownProps) => {
 const mdp = dispatch => {
   return {
     processHome: (home, id) => dispatch(editHome(home, id)),
+    changeFilter: (filter, value) => dispatch(changeFilter(filter, value))
   };
 };
 

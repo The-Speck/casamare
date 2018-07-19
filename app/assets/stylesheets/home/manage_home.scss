@@ -1,6 +1,7 @@
 .home-child.manage {
-  width: 45%;
-  left: 22.5%;
+  left: calc(1vw + 22.5%);
+  min-width: 40em;
+  max-width: 50em;
 }
 
 .home-header-close.new-home{

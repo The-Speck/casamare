@@ -1,13 +1,13 @@
 import React from 'react';
 import HomeIndexItem from './home_index_item';
 import Footer from '../footer';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class HomeListing extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { page: 1 };
+    this.state = { page: 1, type: this.props.type };
     this.handlePageTurning = this.handlePageTurning.bind(this);
   }
 
@@ -15,6 +15,13 @@ class HomeListing extends React.Component {
     return (e) => {
       this.setState({ page: page});
     };
+  }
+
+  componentDidUpdate(prevProps) {
+    const type = /[a-z]{3,}/.exec(this.props.location.pathname)[0];
+    if ( type !== this.state.type) {
+      this.setState({ type });
+    }
   }
 
   pages() {
@@ -97,7 +104,7 @@ class HomeListing extends React.Component {
     const homes = allHomes.slice(houseStart, houseEnd).map(home => {
       return (
         <Link
-          to={`/${this.props.type}/${home.id}`}
+          to={`/${this.state.type}/${home.id}`}
           key={home.id}
           className='home-show-link'
           >
@@ -108,7 +115,7 @@ class HomeListing extends React.Component {
 
     return (
       <div className='index-items-container'>
-        <h2>Real Estate</h2> <span>{allHomes.length} homes to {this.props.type}</span>
+        <h2>Real Estate</h2> <span>{allHomes.length} homes to {this.state.type}</span>
         <ul className='index-items'>
           { homes }
         </ul>
@@ -122,4 +129,4 @@ class HomeListing extends React.Component {
   }
 }
 
-export default HomeListing;
+export default withRouter(HomeListing);
