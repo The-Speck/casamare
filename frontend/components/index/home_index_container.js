@@ -6,10 +6,11 @@ import { withRouter } from 'react-router';
 import { fetchHomes } from '../../actions/home_actions.js';
 import { changeFilter } from '../../actions/filter_actions';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
     homes: Object.values(state.entities.homes),
     filters: state.ui.filters,
+    type: /[a-z]{3,}/.exec(ownProps.location.pathname)[0]
   };
 };
 

@@ -42,3 +42,12 @@ export const deleteHome = id => {
     error: err => console.log
   });
 };
+
+export const savedHomes = homeIds => {
+  return $.ajax({
+    method: 'GET',
+    url: '/api/homes/savedhomes',
+    data: { home_ids: homeIds },
+    error: (err) => console.log(err)
+  });
+};

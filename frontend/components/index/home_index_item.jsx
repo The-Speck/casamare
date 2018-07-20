@@ -15,8 +15,6 @@ class HomeIndexItem extends React.Component {
   }
 
   handleSave(e) {
-    e.stopPropagation();
-
     if (!this.props.loggedIn) {
       this.props.openModal('login');
     } else if (this.state.saved) {
@@ -86,6 +84,7 @@ class HomeIndexItem extends React.Component {
 
 const msp = state => {
   return {
+    loggedIn: Boolean(state.session.id)
   };
 };
 

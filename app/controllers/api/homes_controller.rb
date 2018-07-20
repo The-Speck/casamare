@@ -67,6 +67,16 @@ class Api::HomesController < ApplicationController
     end
   end
 
+  def savedhomes
+    ids = params[:home_ids].map(&:to_i)
+    @homes = Home.where(id: ids)
+    render :index
+  end
+
+  # def saved_params
+  #   params.requrie(:home_).permit(home_ids: [])
+  # end
+
   def home_params
     params.require(:home).permit(:address, :latitude, :longitude, :beds, :baths, :price, :sale, :rent)
   end

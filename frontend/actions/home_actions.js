@@ -58,3 +58,11 @@ export const deleteHome = (id) => dispatch => (
     return dispatch(receiveErrors(err.responseJSON));
   })
 );
+
+export const savedHomes = (homeIds) => dispatch => (
+  HomeAPIUtil.savedHomes(homeIds).then(homes => (
+    dispatch(receiveHomes(homes))
+  ), err => (
+    dispatch(receiveErrors(err.responseJSON))
+  ))
+);
