@@ -103,7 +103,7 @@ class HomeListing extends React.Component {
 
   render() {
     const { homes: allHomes } = this.props;
-    const type = /[a-z]{3,}/.exec(this.props.location.pathname)[0];
+    let type = /[a-z]{3,}/.exec(this.props.location.pathname)[0];
 
     const houseStart = (this.state.page - 1) * 20;
     const houseEnd = this.state.page * 20;
@@ -116,6 +116,8 @@ class HomeListing extends React.Component {
           saved={this.props.savedHomes.includes(home.id)}/>
       );
     });
+
+    if (type === 'sell') type = 'compete with';
 
     return (
       <div className='index-items-container'>

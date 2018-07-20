@@ -6,7 +6,7 @@ class SplashBody extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { type: 'buy', search: '', submit: false, loggedIn: this.props.loggedIn};
+    this.state = { type: 'buy', search: '', submit: false, loggedIn: this.props.loggedIn, currentImage: Math.floor(Math.random()*3.99)};
 
     this.handleTypeButton = this.handleTypeButton.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -17,6 +17,7 @@ class SplashBody extends React.Component {
   componentDidMount() {
     const splashVideo = document.getElementById("splashVid");
     splashVideo.play();
+    this.handleImageChange();
   }
 
   componentDidUpdate(prevProps) {
@@ -50,17 +51,30 @@ class SplashBody extends React.Component {
     this.setState({ search: e.target.value});
   }
 
+  handleImageChange(){
+    window.setInterval(() => {
+      this.setState({ currentImage: (this.state.currentImage + 1)%3 });
+    }, 5000);
+  }
+
+  images() {
+    let imageLinks = window.splashLink.split(',');
+    return(
+      <video autoPlay muted loop id="splashVid">
+        <source src={imageLinks[this.state.currentImage]} type="video/mp4"/>
+      </video>
+    );
+  }
+
   render () {
     const { selected, type, submit } = this.state;
-
     if (submit) return <Redirect to={`/${this.state.type}`}/>;
+
 
     return (
       <div>
         <div className='splash-body'>
-          <video autoPlay muted loop id="splashVid">
-            <source src={window.splashLink} type="video/mp4"/>
-          </video>
+          {this.images()}
 
           <div className='home-page-container'>
             <div className='home-page-buttons'>

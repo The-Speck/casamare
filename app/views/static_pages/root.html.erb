@@ -4,9 +4,11 @@
   </script>
 <% end %>
 
+<% image = ['splash_image1.mp4', 'splash_image2.mp4' ,'splash_image3.mp4', 'splash_image4.mp4'].map{|image| video_url(image)}.join(',') %>
+
 <script type="text/javascript">
   window.logo = '<%= image_url('logo.png') %>'
-  window.splashLink = '<%= video_url('splash_image.mp4') %>'
+  window.splashLink = '<%= image %>'
   window.imageEHO = '<%= image_url('eho.png') %>'
   window.gitLogo = '<%= image_url('git_logo.png') %>'
 </script>

@@ -4,12 +4,13 @@
   overflow: hidden;
   position: fixed;
   z-index: -1;
+  background: black;
 }
 
 #splashVid {
   width: 100%;
-  position: absolute;
   bottom: 0;
+  position: absolute;
   z-index: -1;
 }
 
@@ -34,7 +35,7 @@
 .home-page-container {
   top: 40%;
   position: fixed;
-  left: 32%;
+  left: 37%;
   width: 450px;
   -webkit-appearance:none;
 }
