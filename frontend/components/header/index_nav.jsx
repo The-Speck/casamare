@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link, Redirect } from 'react-router-dom';
+
 import FilterModal from '../modal/filter_modal';
 
 class IndexNav extends React.Component {
@@ -9,6 +11,7 @@ class IndexNav extends React.Component {
     this.handleFilter = this.handleFilter.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSavedHomes = this.handleSavedHomes.bind(this);
   }
 
   handleFilter(type) {
@@ -62,6 +65,14 @@ class IndexNav extends React.Component {
     this.props.updateFilter('area', this.state.area);
   }
 
+  handleSavedHomes(){
+    if (this.props.loggedIn) {
+        this.props.history.push('/savedhomes');
+    } else {
+      this.props.openModal('login');
+    }
+  }
+
   render () {
     const { maxPrice, minBaths, minBeds, minPrice } = this.props.filters;
     const priceStr = this.priceString(minPrice, maxPrice);
@@ -99,7 +110,7 @@ class IndexNav extends React.Component {
             </button>
           </li>
         </ul>
-        <button id='saved-homes-button'>{`Saved Homes (${this.props.savedHomes.length})`}</button>
+        <button onClick={this.handleSavedHomes} id='saved-homes-button'>{`Saved Homes (${this.props.savedHomes.length})`}</button>
       </nav>
     );
   }

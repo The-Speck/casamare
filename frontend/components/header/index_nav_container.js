@@ -1,4 +1,6 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
 
 import { openModal, closeModal } from '../../actions/modal_actions';
 import { updateFilter } from '../../actions/filter_actions';
@@ -9,15 +11,17 @@ const msp = state => {
 
   return {
     filters: state.ui.filters,
-    savedHomes: user.savedHomes || []
+    savedHomes: user.savedHomes || [],
+    loggedIn: Boolean(state.session.id)
   };
 };
 
 const mdp = dispatch => {
   return {
     openFilter: (type) => dispatch(openModal(type)),
-    updateFilter: (filter, value) => dispatch(updateFilter(filter, value))
+    updateFilter: (filter, value) => dispatch(updateFilter(filter, value)),
+    openModal: (type) => dispatch(openModal(type))
   };
 };
 
-export default connect(msp, mdp)(IndexNav);
+export default withRouter(connect(msp, mdp)(IndexNav));

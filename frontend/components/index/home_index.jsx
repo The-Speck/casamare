@@ -50,7 +50,7 @@ class HomeIndex extends React.Component {
       <div className='index-body'>
         <HomeMap type={type} area={this.state.area}/>
         {type === 'savedhomes' ?
-        <SavedHomes type={type}/> :
+        <ProtectedRoute component={SavedHomes} type={type}/> :
         <HomeListing type={type}/>}
 
         <Switch>
