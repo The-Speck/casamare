@@ -14,8 +14,11 @@ class HomeIndex extends React.Component {
   constructor(props){
     super(props);
 
-    this.state = { type: this.props.type,
-    area: props.filters.area, completedType: false};
+    this.state = {
+      type: this.props.type,
+      area: props.filters.area,
+      completedType: false
+    };
   }
 
   componentDidMount() {

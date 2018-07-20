@@ -43,6 +43,10 @@
   border-left: 0;
 }
 
+.home-header-save:focus {
+  outline: none;
+}
+
 .home-header-close {
   border-right: 0;
   border-top: 0;
@@ -51,9 +55,10 @@
 }
 
 .home-header-edit {
-  padding: 1em 25px;
+  font-size: 13.333px;
+  padding: 1.4em 25px;
   border-left: 1px solid white;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .home-header button {
@@ -65,6 +70,11 @@
   cursor: pointer;
 }
 
+.home-header-delete {
+  border: none;
+  border-left: 1px solid white;
+}
+
 .home-header button:hover {
   background: linear-gradient(to top,rgba(200,225,249,.5),#d9f0f9);
 }
@@ -72,6 +82,10 @@
 .save-heart {
   font-size: 16px;
   vertical-align: middle;
+}
+
+.saved-heart {
+  font-size: 16px;
 }
 
 .home-address {

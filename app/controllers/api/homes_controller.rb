@@ -37,7 +37,7 @@ class Api::HomesController < ApplicationController
   def attach_generic_house(home)
     home.photos.purge
     if home_photos.empty?
-      file = EzDownload.open('https://s3.amazonaws.com/casamare-dev/Main+House+Images/home.png')
+      file = EzDownload.open("https://s3.amazonaws.com/casamare-dev/Main+House+Images/home.png")
       home.photos.attach(io: file, filename: 'home.png')
     else
       home_photos[:photos].each do |photo|

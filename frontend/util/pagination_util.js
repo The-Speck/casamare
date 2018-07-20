@@ -11,6 +11,10 @@ function pages(component) {
 
   let numPages = Math.floor(component.props.homes.length / 20);
 
+  if (page > numPages+1) {
+    component.setState({ page: 1 });
+  }
+
   let first = [
     <li key="1">
       <button className={ page === 1 ? 'page-selected' : ''} onClick={handlePageTurning(1)}>1</button>

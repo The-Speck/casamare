@@ -5,10 +5,11 @@ class Home extends React.Component {
   constructor(props){
     super(props);
 
-    this.state = { currentPhoto: 0, close: false};
+    this.state = { currentPhoto: 0, close: false, saved: this.props.saved};
     this.closeShow = this.closeShow.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleContact = this.handleContact.bind(this);
+    this.handleSave = this.handleSave.bind(this);
   }
 
   componentDidMount() {
@@ -43,6 +44,18 @@ class Home extends React.Component {
     }
   }
 
+  handleSave(e) {
+    if (!this.props.loggedIn) {
+      this.props.openModal('login');
+    } else if (this.state.saved) {
+      this.setState({ saved: false });
+      this.props.deleteSave(this.props.home.id);
+    } else {
+      this.setState({ saved: true });
+      this.props.createSave(this.props.home.id);
+    }
+  }
+
   render () {
     const { address, baths, beds, ownerEmail, sale, rent, price, photos} = this.props.home;
     const type = /^\/[a-z]+/.exec(this.props.location.pathname)[0];
@@ -59,6 +72,15 @@ class Home extends React.Component {
       deleteButton = <button className='home-header-delete' onClick={this.handleDelete}>DELETE</button>;
     }
 
+    const heart =  this.state.saved ?
+      <button
+        onClick={this.handleSave}
+        className='home-header-save'>
+        <span className='saved-heart'>&#128153;</span> SAVE</button> :
+      <button
+        onClick={this.handleSave}
+        className='home-header-save'><span className='save-heart'>&#9825;</span> SAVE</button>;
+
     return (
       <div onClick={this.closeShow}
         className='home-background'>
@@ -67,9 +89,7 @@ class Home extends React.Component {
           onClick={e => e.stopPropagation()}
           className='home-child'>
           <ul className='home-header'>
-            <button className='home-header-save'>
-              <span className='save-heart'>&#9825;</span> SAVE
-            </button>
+            { heart }
             <div>
               {deleteButton}
               {editButton}

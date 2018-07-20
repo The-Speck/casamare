@@ -19,6 +19,8 @@ const msp = (reactState, ownProps) => {
   }
 
   return {
+    prevLoc: reactState.ui.filters.buy ? 'buy' : 'rent',
+
     home: {
       streetAddress,
       id: null,

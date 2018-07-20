@@ -7,13 +7,15 @@ import { changeFilter } from '../../actions/filter_actions';
 const msp = (reactState, ownProps) => {
   if (!reactState.session.id) return {};
 
-  const home = reactState.entities.homes[ownProps.match.params.homeId];
+  const home = reactState.entities.homes[ownProps.match.params.homeId] || { address: '' };
   const [streetAddress, city, state, zip] = home.address.split(', ');
 
   return {
+    prevLoc: reactState.ui.filters.buy ? 'buy' : 'rent',
+
     home: {
       streetAddress,
-      id: home.id,
+      id: ownProps.match.params.homeId,
       city,
       state,
       zip,

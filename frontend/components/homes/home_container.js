@@ -3,14 +3,18 @@ import Home from './home.jsx';
 
 import { fetchOwner } from '../../actions/owner_actions';
 import { fetchHome, deleteHome } from '../../actions/home_actions';
+import { createSave, deleteSave } from '../../actions/save_actions';
 import { openModal } from '../../actions/modal_actions';
 
 const msp = (state, ownProps) => {
   const homeId = ownProps.match.params.homeId;
   const home = state.entities.homes[homeId] || {};
+  const user = state.entities.users[state.session.id];
 
   return {
     sessionId: state.session.id,
+    loggedIn: Boolean(state.session.id),
+    saved: user ? user.savedHomes.includes(homeId) : false,
 
     home: {
       id: home.id || null,
@@ -31,6 +35,8 @@ const mdp = dispatch => {
   return {
     fetchOwner: (ownerId) => dispatch(fetchOwner(ownerId)),
     fetchHome: (homeId) => dispatch(fetchHome(homeId)),
+    createSave: (homeId) => dispatch(createSave(homeId)),
+    deleteSave: (homeId) => dispatch(deleteSave(homeId)),
     deleteHome: id => dispatch(deleteHome(id)),
     openModal: modal => dispatch(openModal(modal))
   };

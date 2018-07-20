@@ -5,7 +5,11 @@ import merge from 'lodash/merge';
 class ManageHome extends React.Component {
   constructor(props) {
     super(props);
-    this.state = merge({ close: false, lat: null, lng: null, validAddress: null, disabled: true, disabledClass: 'disabled', submit: false}, props.home);
+
+    this.state = merge({
+      close: false, lat: null, lng: null,
+      validAddress: null, disabled: true,
+      disabledClass: 'disabled', submit: false }, props.home);
 
     this.closeShow = this.closeShow.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,11 +27,14 @@ class ManageHome extends React.Component {
 
   closeShow() {
     this.setState({ close: true });
-    this.props.changeFilter('buy', true);
+    this.props.changeFilter(this.props.prevLoc, true);
   }
 
   handleFile(e) {
-    this.setState({ photos: Object.values(e.currentTarget.files) });
+    this.setState(
+      { photos: Object.values(e.currentTarget.files) },
+      this.handleValidAddress
+    );
   }
 
   handleSubmit(e) {
@@ -57,8 +64,7 @@ class ManageHome extends React.Component {
       let val = e.target.value;
       if (type === 'baths' || type === 'beds') val = parseInt(val);
       if (type === 'price') val = parseInt(/\d+/.exec(val));
-      this.setState({ [type]: val }, this.setDisability);
-      this.handleValidAddress();
+      this.setState({ [type]: val }, this.handleValidAddress);
     };
   }
 
@@ -73,16 +79,13 @@ class ManageHome extends React.Component {
   handleRentSell(e) {
     switch (e.target.value) {
       case 'rent':
-        this.setState({ rent: true }, this.setDisability);
-        this.setState({ sale: false }, this.setDisability);
+        this.setState({ rent: true, sale: false }, this.handleValidAddress);
         break;
       case 'sale':
-        this.setState({ rent: false }, this.setDisability);
-        this.setState({ sale: true }, this.setDisability);
+        this.setState({ rent: false, sale: true }, this.handleValidAddress);
         break;
       case 'both':
-        this.setState({ rent: true }, this.setDisability);
-        this.setState({ sale: true }, this.setDisability);
+        this.setState({ rent: true, sale: true }, this.handleValidAddress);
         break;
       default:
         return;
@@ -94,8 +97,15 @@ class ManageHome extends React.Component {
     geocoder.geocode( { 'address': address}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK)
       {
-        this.setState({lat: results[0].geometry.location.lat()});
-        this.setState({lng: results[0].geometry.location.lng()});
+        this.setState({
+          lat: results[0].geometry.location.lat(),
+          lng: results[0].geometry.location.lng()
+        }, () => {
+
+          if (this.state.lat !== null, this.state.lng !== null) {
+            this.setState({ validAddress: true, address }, this.setDisability);
+          }
+        });
       }
     }.bind(this));
   }
@@ -110,9 +120,6 @@ class ManageHome extends React.Component {
     if (streetAddress !== '', city !== '', state !== '', zip !== '') {
       const address = [streetAddress, city, state, zip].join(', ');
       this.getLatLng(address);
-      if (lat !== null, lng !== null) {
-        this.setState({ validAddress: true, address });
-      }
     }
   }
 
@@ -158,7 +165,7 @@ class ManageHome extends React.Component {
         >
         {this.state.submit ? <Redirect to={`/${redirectPath}/${this.state.id}`}/> : '' }
         {!this.state.userId ? <Redirect exact to='/'/> : ''}
-        {this.state.close ? <Redirect exact to='/buy'/> : ''}
+        {this.state.close ? <Redirect exact to={`/${this.props.prevLoc}`}/> : ''}
         <div
           onClick={e => e.stopPropagation()}
           className='home-child manage'>
