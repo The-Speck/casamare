@@ -10,7 +10,9 @@ class HomeListing extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { page: 1, type: this.props.type };
+    this.state = { page: 1,
+      // type: this.props.type
+    };
     // this.handlePageTurning = this.handlePageTurning.bind(this);
   }
 
@@ -20,12 +22,12 @@ class HomeListing extends React.Component {
   //   };
   // }
 
-  componentDidUpdate(prevProps) {
-    const type = /[a-z]{3,}/.exec(this.props.location.pathname)[0];
-    if ( type !== this.state.type) {
-      this.setState({ type });
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   const type = /[a-z]{3,}/.exec(this.props.location.pathname)[0];
+  //   if ( type !== this.state.type) {
+  //     this.setState({ type });
+  //   }
+  // }
 
   // pages() {
   //   const { page } = this.state;
@@ -101,6 +103,7 @@ class HomeListing extends React.Component {
 
   render() {
     const { homes: allHomes } = this.props;
+    const type = /[a-z]{3,}/.exec(this.props.location.pathname)[0];
 
     const houseStart = (this.state.page - 1) * 20;
     const houseEnd = this.state.page * 20;
@@ -109,14 +112,14 @@ class HomeListing extends React.Component {
         <HomeIndexItem
           key={home.id}
           home={home}
-          type={this.state.type}
+          type={type}
           saved={this.props.savedHomes.includes(home.id)}/>
       );
     });
 
     return (
       <div className='index-items-container'>
-        <h2>Real Estate</h2> <span>{allHomes.length} homes to {this.state.type}</span>
+        <h2>Real Estate</h2> <span>{allHomes.length} homes to {type}</span>
         <ul className='index-items'>
           { homes }
         </ul>
