@@ -17,7 +17,7 @@ class SplashBody extends React.Component {
   componentDidMount() {
     const splashVideo = document.getElementById("splashVid");
     splashVideo.play();
-    this.handleImageChange();
+    // this.handleImageChange();
   }
 
   componentDidUpdate(prevProps) {
@@ -51,11 +51,11 @@ class SplashBody extends React.Component {
     this.setState({ search: e.target.value});
   }
 
-  handleImageChange(){
-    window.setInterval(() => {
-      this.setState({ currentImage: (this.state.currentImage + 1)%3 });
-    }, 5000);
-  }
+  // handleImageChange(){
+  //   window.setInterval(() => {
+  //     this.setState({ currentImage: (this.state.currentImage + 1)%3 });
+  //   }, 5000);
+  // }
 
   images() {
     let imageLinks = window.splashLink.split(',');
