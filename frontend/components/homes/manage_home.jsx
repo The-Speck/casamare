@@ -9,7 +9,8 @@ class ManageHome extends React.Component {
     this.state = merge({
       close: false, lat: null, lng: null,
       validAddress: null, disabled: true,
-      disabledClass: 'disabled', submit: false }, props.home);
+      disabledClass: 'disabled', submit: false,
+      photoUrl: '' }, props.home);
 
     this.closeShow = this.closeShow.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,10 +32,21 @@ class ManageHome extends React.Component {
   }
 
   handleFile(e) {
-    this.setState(
-      { photos: Object.values(e.currentTarget.files) },
-      this.handleValidAddress
-    );
+    const files = Object.values(e.currentTarget.files);
+    const fileReader = new FileReader();
+
+    fileReader.onloadend = () => {
+      this.setState(
+        { photos: files, photoUrl: fileReader.result},
+        this.handleValidAddress
+      );
+    };
+
+    if (files.length > 0) {
+      fileReader.readAsDataURL(files[0]);
+    } else {
+      this.setState({ photoUrl: '' });
+    }
   }
 
   handleSubmit(e) {
@@ -158,6 +170,11 @@ class ManageHome extends React.Component {
       redirectPath = 'rent';
     }
 
+    const preview = this.state.photoUrl ?
+      <div className='upload-image-container'>
+        <img className='upload-image' src={this.state.photoUrl}/>
+      </div> : '';
+
     return (
       <div
         onClick={this.closeShow}
@@ -261,6 +278,7 @@ class ManageHome extends React.Component {
             <label className='new-home-label'>Attach Images</label>
             <input onChange={this.handleFile} type='file' />
           </div>
+          {preview}
         </div>
       </div>
     );

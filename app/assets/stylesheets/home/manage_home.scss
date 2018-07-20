@@ -109,3 +109,16 @@
   color: red;
   font-size: large;
 }
+
+.upload-image-container {
+  background: black;
+  width: 90%;
+  height: 20em;
+  overflow: hidden;
+  margin: 10px auto;
+  text-align: center;
+}
+
+.upload-image {
+  height: 100%;
+}
