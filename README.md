@@ -8,6 +8,8 @@ The index page is laid out with a map to the left and the home listing on the ri
 
 The home show modal contains a header with save button and edit/delete buttons if the home owner is the current user. The website also allows for the creation of new home by clicking the sell button, allowed only by a logged in user. Logged in users may also see saved homes listings.
 
-CasaMare is the portal to your future home. Let us help you find your way because a home is not just a place, it's a feeling. Welcome home.
+The App features functional search bars that utilize google maps' geocoding to give an accurate locations and addresses for users to search and post.
 
-![alt text](https://raw.githubusercontent.com/the-speck/casamare/master/app/assets/images/splash_image.mp4)
+CasaMare is the portal to your future home. Let us help you find your way because a home is not just a place, it's a feeling. [Welcome home](https://casa-mare.herokuapp.com/#/).
+
+![alt text](https://www.sweetwaterliving.com/media/4660825/hero-1448px-25fps-_optim.gif)
