@@ -70,7 +70,10 @@ class Api::HomesController < ApplicationController
   end
 
   def savedhomes
-    ids = params[:home_ids].map(&:to_i)
+    ids = params[:home_ids]
+    if ids
+      ids = ids.map(&:to_i)
+    end
     @homes = Home.where(id: ids)
     render :index
   end
