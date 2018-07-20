@@ -44,7 +44,7 @@ const msp = (reactState, ownProps) => {
 const mdp = dispatch => {
   return {
     processHome: (home) => dispatch(createHome(home)),
-    changeFilter: (filter, value) => dispatch(changeFilter(filter, value))
+    changeFilter: (filter, value) => dispatch(changeFilter(filter, value)),
   };
 };
 

@@ -28,6 +28,8 @@ class Api::HomesController < ApplicationController
 
     if @home.save
       attach_generic_house(@home);
+      Save.create(home_id: @home.id, user_id: current_user.id)
+
       render :show
     else
       render json: @home.errors.full_messages, status: 422

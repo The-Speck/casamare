@@ -7,7 +7,7 @@ import { createSave, deleteSave } from '../../actions/save_actions';
 import { openModal } from '../../actions/modal_actions';
 
 const msp = (state, ownProps) => {
-  const homeId = ownProps.match.params.homeId;
+  const homeId = parseInt(ownProps.match.params.homeId);
   const home = state.entities.homes[homeId] || {};
   const user = state.entities.users[state.session.id];
 
