@@ -34,6 +34,8 @@ class HomeIndexItem extends React.Component {
 
   render() {
     const { home } = this.props;
+    const saved = window.saved;
+    const unsaved = window.unsaved;
 
     let price = 0;
     let beds = '$';
@@ -46,10 +48,10 @@ class HomeIndexItem extends React.Component {
     const heart =  this.state.saved ?
       <button
         onClick={this.handleSave}
-        className='index-saved-button'>&#128153;</button> :
+        className='index-save-button'><img className='index-saved-image' src={saved}/></button> :
       <button
         onClick={this.handleSave}
-        className='index-save-button'>&#128155;</button>;
+        className='index-save-button'><img className='index-unsaved-image' src={unsaved}/></button>;
 
     return (
       <li className='index-item'>

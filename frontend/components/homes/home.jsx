@@ -57,6 +57,9 @@ class Home extends React.Component {
   }
 
   render () {
+    const saved = window.saved;
+    const unsaved = window.unsaved;
+
     const { address, baths, beds, ownerEmail, sale, rent, price, photos} = this.props.home;
     const type = /^\/[a-z]+/.exec(this.props.location.pathname)[0];
 
@@ -76,15 +79,16 @@ class Home extends React.Component {
       <button
         onClick={this.handleSave}
         className='home-header-save'>
-        <span className='saved-heart'>&#128153;</span> SAVE</button> :
+        <img className='home-saved-image' src={saved}/> SAVE</button> :
       <button
         onClick={this.handleSave}
-        className='home-header-save'><span className='save-heart'>&#9825;</span> SAVE</button>;
+        className='home-header-save'>
+        <img className='home-unsaved-image' src={unsaved}/> SAVE</button>;
 
     return (
       <div onClick={this.closeShow}
         className='home-background'>
-        {this.state.close ? <Redirect exact to={`${type}`}/> : ''}
+        {this.state.close || !this.props.home.id ? <Redirect exact to={`${type}`}/> : ''}
         <div
           onClick={e => e.stopPropagation()}
           className='home-child'>

@@ -79,13 +79,12 @@
   background: linear-gradient(to top,rgba(200,225,249,.5),#d9f0f9);
 }
 
-.save-heart {
-  font-size: 16px;
-  vertical-align: middle;
+.home-saved-image {
+  width: 10px;
 }
 
-.saved-heart {
-  font-size: 16px;
+.home-unsaved-image {
+  width: 10px;
 }
 
 .home-address {
@@ -104,13 +103,11 @@
   background-color: black;
   overflow: hidden;
   margin-top: 1em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  text-align: center;
 }
 
 .home-image img {
-  width: 100%;
+  height: 100%;
 }
 
 .home-info {

@@ -31,6 +31,8 @@ class HomeIndex extends React.Component {
     const keys = Object.keys(this.props.filters);
     const newType = /[a-z]{3,}/.exec(this.props.location.pathname)[0];
 
+    if (newType === 'savedhomes') return;
+
     for (let i = 0; i < keys.length; i++)
     {
       if (prevProps.filters[keys[i]] !== this.props.filters[keys[i]]) {

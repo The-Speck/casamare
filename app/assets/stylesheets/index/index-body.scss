@@ -117,16 +117,22 @@ button.next-page-button:hover {
 .index-save {
   position: absolute;
   z-index: 20;
-  top: 0;
+  top: .5em;
   right: 0;
 }
 
 .index-save-button {
-  font-size: 32px;
   background: transparent;
-  color: white;
   border: none;
   cursor: pointer;
+}
+
+.index-saved-image {
+  width: 30px;
+}
+
+.index-unsaved-image {
+  width: 30px;
 }
 
 .index-save-button:focus{
@@ -135,14 +141,6 @@ button.next-page-button:hover {
 
 .index-item-home {
   display: inline;
-}
-
-.index-saved-button {
-  font-size: 32px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  color: #0074e4;
 }
 
 .index-saved-button:focus {
