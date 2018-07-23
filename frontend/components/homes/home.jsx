@@ -5,7 +5,11 @@ class Home extends React.Component {
   constructor(props){
     super(props);
 
-    this.state = { currentPhoto: 0, close: false, saved: this.props.saved};
+    this.state = {
+      currentPhoto: 0,
+      close: false,
+      saved: this.props.saved
+    };
     this.closeShow = this.closeShow.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleContact = this.handleContact.bind(this);
@@ -55,6 +59,17 @@ class Home extends React.Component {
       this.props.createSave(this.props.home.id);
     }
   }
+
+  // prevImage() {
+  //   const { currentPhoto, amtPhotos } = this.state;
+  //   const newPhotoPOS = currentPhoto === 0 ? amtPhotos - 1 : currentPhoto - 1;
+  //   this.setState({ currentPhoto: newPhotoPOS });
+  // }
+  //
+  // nextImage(){
+  //   const { currentPhoto, amtPhotos } = this.state;
+  //   this.setState({ currentPhoto: (currentPhoto + 1) % amtPhotos });
+  // }
 
   render () {
     const saved = window.saved;

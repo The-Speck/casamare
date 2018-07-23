@@ -10,7 +10,7 @@ class ManageHome extends React.Component {
       close: false, lat: null, lng: null,
       validAddress: null, disabled: true,
       disabledClass: 'disabled', submit: false,
-      photoUrl: '' }, props.home);
+      photoUrl: [], currentPhoto: 0, amtPhotos: 0 }, props.home);
 
     this.closeShow = this.closeShow.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,6 +18,8 @@ class ManageHome extends React.Component {
     this.handeChange = this.handleChange.bind(this);
     this.handleRentSell = this.handleRentSell.bind(this);
     this.setDisability = this.setDisability.bind(this);
+    this.prevImage = this.prevImage.bind(this);
+    this.nextImage = this.nextImage.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -33,17 +35,18 @@ class ManageHome extends React.Component {
 
   handleFile(e) {
     const files = Object.values(e.currentTarget.files);
-    const fileReader = new FileReader();
-
-    fileReader.onloadend = () => {
-      this.setState(
-        { photos: files, photoUrl: fileReader.result},
-        this.handleValidAddress
-      );
-    };
+    this.setState({ photos: files, amtPhotos: files.length });
 
     if (files.length > 0) {
-      fileReader.readAsDataURL(files[0]);
+      for (let i = 0; i < files.length; i++) {
+        const fileReader = new FileReader();
+
+        fileReader.onloadend = () => {
+          this.setState({ photoUrl: this.state.photoUrl.concat([fileReader.result]) });
+        };
+
+        fileReader.readAsDataURL(files[i]);
+      }
     } else {
       this.setState({ photoUrl: '' });
     }
@@ -135,6 +138,17 @@ class ManageHome extends React.Component {
     }
   }
 
+  prevImage() {
+    const { currentPhoto, amtPhotos } = this.state;
+    const newPhotoPOS = currentPhoto === 0 ? amtPhotos - 1 : currentPhoto - 1;
+    this.setState({ currentPhoto: newPhotoPOS });
+  }
+
+  nextImage(){
+    const { currentPhoto, amtPhotos } = this.state;
+    this.setState({ currentPhoto: (currentPhoto + 1) % amtPhotos });
+  }
+
   render() {
     let saleRent;
     let errorText='';
@@ -170,9 +184,11 @@ class ManageHome extends React.Component {
       redirectPath = 'rent';
     }
 
-    const preview = this.state.photoUrl ?
+    const preview = this.state.photoUrl.length > 0 ?
       <div className='upload-image-container'>
-        <img className='upload-image' src={this.state.photoUrl}/>
+        <button className='image-traversal prev' onClick={this.prevImage}>{'<'}</button>
+        <img className='upload-image' src={this.state.photoUrl[this.state.currentPhoto]}/>
+        <button className='image-traversal next' onClick={this.nextImage}>{'>'}</button>
       </div> : '';
 
     return (
@@ -276,7 +292,7 @@ class ManageHome extends React.Component {
           </div>
           <div className='add-image-button'>
             <label className='new-home-label'>Attach Images</label>
-            <input onChange={this.handleFile} type='file' />
+            <input onChange={this.handleFile} type='file' multiple/>
           </div>
           {preview}
         </div>

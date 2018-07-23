@@ -117,8 +117,39 @@
   overflow: hidden;
   margin: 10px auto;
   text-align: center;
+  position: relative;
+  z-index: -1;
 }
 
 .upload-image {
   height: 100%;
+}
+
+.image-traversal {
+  position: absolute;
+  font-weight: bolder;
+  bottom: 35%;
+  height: 3em;
+  width: 1.5em;
+  color: white;
+  background: #00000057;
+  border: 1px solid whitesmoke;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.image-traversal:hover {
+  background: #6495ed5e;
+}
+
+.image-traversal:focus {
+  outline: none;
+}
+
+.image-traversal.prev {
+  left: 0;
+}
+
+.image-traversal.next {
+  right: 0;
 }
