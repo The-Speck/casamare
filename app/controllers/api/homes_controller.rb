@@ -78,10 +78,6 @@ class Api::HomesController < ApplicationController
     render :index
   end
 
-  # def saved_params
-  #   params.requrie(:home_).permit(home_ids: [])
-  # end
-
   def home_params
     params.require(:home).permit(:address, :latitude, :longitude, :beds, :baths, :price, :sale, :rent)
   end

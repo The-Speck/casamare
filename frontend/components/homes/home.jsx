@@ -8,12 +8,15 @@ class Home extends React.Component {
     this.state = {
       currentPhoto: 0,
       close: false,
-      saved: this.props.saved
+      saved: this.props.saved,
     };
+    
     this.closeShow = this.closeShow.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleContact = this.handleContact.bind(this);
     this.handleSave = this.handleSave.bind(this);
+    this.prevImage = this.prevImage.bind(this);
+    this.nextImage = this.nextImage.bind(this);
   }
 
   componentDidMount() {
@@ -60,16 +63,20 @@ class Home extends React.Component {
     }
   }
 
-  // prevImage() {
-  //   const { currentPhoto, amtPhotos } = this.state;
-  //   const newPhotoPOS = currentPhoto === 0 ? amtPhotos - 1 : currentPhoto - 1;
-  //   this.setState({ currentPhoto: newPhotoPOS });
-  // }
-  //
-  // nextImage(){
-  //   const { currentPhoto, amtPhotos } = this.state;
-  //   this.setState({ currentPhoto: (currentPhoto + 1) % amtPhotos });
-  // }
+  prevImage() {
+    const { currentPhoto } = this.state;
+    const { amtPhotos } = this.props;
+
+    const newPhotoPOS = currentPhoto === 0 ? amtPhotos - 1 : currentPhoto - 1;
+    this.setState({ currentPhoto: newPhotoPOS });
+  }
+
+  nextImage(){
+    debugger
+    const { currentPhoto } = this.state;
+    const { amtPhotos } = this.props;
+    this.setState({ currentPhoto: (currentPhoto + 1) % amtPhotos });
+  }
 
   render () {
     const saved = window.saved;
@@ -125,10 +132,17 @@ class Home extends React.Component {
 
           <hr/>
 
-          <div className='home-image'>
-            {
-              <img src={photos[this.state.currentPhoto]}/>
-            }
+          <div className='upload-image-container'>
+            <button
+              className='image-traversal prev'
+              onClick={this.prevImage}>{'<'}
+            </button>
+              <img className='upload-image'
+                src={this.props.home.photos[this.state.currentPhoto]}/>
+            <button
+              className='image-traversal next'
+              onClick={this.nextImage}>{'>'}
+            </button>
           </div>
 
           <div className='home-info'>

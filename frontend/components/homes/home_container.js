@@ -15,6 +15,7 @@ const msp = (state, ownProps) => {
     sessionId: state.session.id,
     loggedIn: Boolean(state.session.id),
     saved: user ? user.savedHomes.includes(homeId) : false,
+    amtPhotos: home.photos ? home.photos.length : 1,
 
     home: {
       id: home.id || null,

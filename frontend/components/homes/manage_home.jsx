@@ -186,9 +186,16 @@ class ManageHome extends React.Component {
 
     const preview = this.state.photoUrl.length > 0 ?
       <div className='upload-image-container'>
-        <button className='image-traversal prev' onClick={this.prevImage}>{'<'}</button>
-        <img className='upload-image' src={this.state.photoUrl[this.state.currentPhoto]}/>
-        <button className='image-traversal next' onClick={this.nextImage}>{'>'}</button>
+        <button
+          className='image-traversal prev'
+          onClick={this.prevImage}>{'<'}
+        </button>
+          <img className='upload-image'
+            src={this.state.photoUrl[this.state.currentPhoto]}/>
+        <button
+          className='image-traversal next'
+          onClick={this.nextImage}>{'>'}
+        </button>
       </div> : '';
 
     return (
