@@ -6,7 +6,10 @@ class SplashBody extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { type: 'buy', search: '', submit: false, loggedIn: this.props.loggedIn, currentImage: Math.floor(Math.random()*3.99)};
+    this.state = {
+      type: 'buy', search: '', submit: false,
+      loggedIn: this.props.loggedIn,
+      currentImage: Math.floor(Math.random()*3.99)};
 
     this.handleTypeButton = this.handleTypeButton.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -15,9 +18,15 @@ class SplashBody extends React.Component {
   }
 
   componentDidMount() {
+    const input = document.getElementById('home-page-search');
+    const options = {
+      componentRestrictions: {country: 'us'}
+    };
+    this.autocomplete = new google.maps.places.Autocomplete(input, options);
+    this.autocomplete.addListener('place_changed', this.handleChange);
+
     const splashVideo = document.getElementById("splashVid");
     splashVideo.play();
-    // this.handleImageChange();
   }
 
   componentDidUpdate(prevProps) {
@@ -48,14 +57,12 @@ class SplashBody extends React.Component {
   }
 
   handleChange(e){
-    this.setState({ search: e.target.value});
+    if (this.autocomplete.getPlace()) {
+      this.setState({ search: this.autocomplete.getPlace().formatted_address});
+    } else {
+      this.setState({ search: e.target.value});
+    }
   }
-
-  // handleImageChange(){
-  //   window.setInterval(() => {
-  //     this.setState({ currentImage: (this.state.currentImage + 1)%3 });
-  //   }, 5000);
-  // }
 
   images() {
     let imageLinks = window.splashLink.split(',');
@@ -89,7 +96,7 @@ class SplashBody extends React.Component {
               <form onSubmit={this.handleSubmit}>
                 <input
                   onChange={this.handleChange}
-                  className='home-page-search'
+                  id='home-page-search'
                   placeholder='Enter a neighborhood, city, address or ZIP code'>
                 </input>
               </form>

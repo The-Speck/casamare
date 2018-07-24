@@ -10,9 +10,6 @@ const Greeting = ({ currentUser, logout, openModal }) => {
     </nav>
   );
   const personalGreeting = () => {
-    // const regex = /^([^@]+)/;
-    // const name = regex.exec(currentUser.email)[0];
-
     return (
       <div className="user-tooltip">
         My Casa

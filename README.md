@@ -43,3 +43,8 @@ The index body is laid out with a map to the left and the home listing on the ri
 
 ### Saved Home Listing
 ![Saved Homes](https://raw.githubusercontent.com/The-Speck/casamare/master/app/assets/images/saved_homes.PNG)
+
+### The Future
+* Implement a description that users write to make the homes more personable.
+* Write functionality to provide different prices for homes that are both on sale and rent.
+* Add Google's address auto-complete search bar.

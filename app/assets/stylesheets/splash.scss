@@ -40,7 +40,7 @@
   -webkit-appearance:none;
 }
 
-.home-page-search {
+#home-page-search {
   border: none;
   height: 50px;
   width: 100%;
@@ -49,7 +49,7 @@
   padding: 15px;
   font-size: 14px;
 }
-.home-page-search:focus{
+#home-page-search:focus{
   outline: none;
 }
 
