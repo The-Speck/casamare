@@ -15,12 +15,12 @@ class MarkerManager {
 
     Object.keys(this.markers)
       .filter(homeId => !homesObj[homeId])
-      .forEach((homeId) => this.removeMarker(this.markers[homeId]))
+      .forEach((homeId) => this.removeMarker(this.markers[homeId]));
   }
 
   createMarkerFromHome(home) {
     const icon = {
-      url:  'http://www.emoji.co.uk/files/emoji-one/symbols-emoji-one/2225-large-blue-circle.png',
+      url: window.blueDot,
       scaledSize: new google.maps.Size(15,15)
     };
     const position = new google.maps.LatLng(home.latitude, home.longitude);

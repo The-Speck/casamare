@@ -4,7 +4,7 @@
 ---
 What is the difference between a house and a home? A home is yours.
 
-CasaMare is a website to help you find your way home that is suited to your needs. You can find a home to rent or buy in all 50 states filtered out by location, price, number of beds and baths. You can also post homes for sale/rent.
+CasaMare is a website to help you find your way home that is suited to your needs. You can find a home to rent or buy in all 50 states filtered by location, price, number of beds and baths. You can also post homes for sale/rent.
 
 ![Casa Mare](https://www.sweetwaterliving.com/media/4660825/hero-1448px-25fps-_optim.gif)
 

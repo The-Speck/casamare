@@ -72,7 +72,7 @@ class HomeMap extends React.Component {
     }
   }
 
-   componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps) {
     if (prevProps.area !== this.props.area) {
       const geocoder = new google.maps.Geocoder();
 
@@ -89,7 +89,7 @@ class HomeMap extends React.Component {
     if (this.MarkerManager) {
       this.MarkerManager.updateMarkers(this.props.homes);
     }
-   }
+  }
 
   render() {
     return (
