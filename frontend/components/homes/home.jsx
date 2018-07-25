@@ -10,7 +10,7 @@ class Home extends React.Component {
       close: false,
       saved: this.props.saved,
     };
-    
+
     this.closeShow = this.closeShow.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleContact = this.handleContact.bind(this);
@@ -72,7 +72,6 @@ class Home extends React.Component {
   }
 
   nextImage(){
-    debugger
     const { currentPhoto } = this.state;
     const { amtPhotos } = this.props;
     this.setState({ currentPhoto: (currentPhoto + 1) % amtPhotos });
